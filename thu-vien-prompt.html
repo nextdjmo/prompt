@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thư viện Prompt — 40 mẫu để dùng AI hiệu quả hơn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef2f7;
+  --bg-line:rgba(22,33,58,0.07);
+  --ink:#16213a;
+  --ink-soft:#5a6478;
+  --ink-faint:#8b93a3;
+  --surface:#ffffff;
+  --border:#d7dfe9;
+  --border-soft:#e5eaf1;
+  --amber:#c7862c;
+  --amber-bg:#fbf0dd;
+  --teal:#227c72;
+  --teal-bg:#e2f2ef;
+  --indigo:#4b56c9;
+  --indigo-bg:#e7e9fb;
+  --coral:#c1502f;
+  --coral-bg:#fbe7de;
+  --violet:#6d4fb0;
+  --violet-bg:#ece5fa;
+  --rose:#b23c68;
+  --rose-bg:#f9e3ec;
+  --olive:#5f6b28;
+  --olive-bg:#eaeed9;
+  --slate:#33637a;
+  --slate-bg:#deedf1;
+  --plum:#7a3f6d;
+  --plum-bg:#f0e3ec;
+  --steel:#2f5f8a;
+  --steel-bg:#dee8f2;
+  --forest:#2f7a4f;
+  --forest-bg:#dbf0e3;
+  --wood:#8a5a2f;
+  --wood-bg:#f2e6d8;
+  --maroon:#6b2b3a;
+  --maroon-bg:#f0dde2;
+  --cherry:#c2426b;
+  --cherry-bg:#fbe1ec;
+  --dusk:#4a4a6b;
+  --dusk-bg:#e6e6f0;
+  --lime:#5a7a2f;
+  --lime-bg:#eaf0dd;
+  --deepteal:#1f5c3f;
+  --deepteal-bg:#dcece3;
+  --gold:#a8762f;
+  --gold-bg:#f5ecd9;
+  --sky:#2a7ab8;
+  --sky-bg:#dcecf7;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    linear-gradient(var(--bg-line) 1px, transparent 1px) 0 0/100% 42px,
+    linear-gradient(90deg, var(--bg-line) 1px, transparent 1px) 0 0/42px 100%,
+    var(--bg);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;}
+
+/* HERO */
+.hero{
+  max-width:980px;
+  margin:0 auto;
+  padding:72px 28px 40px;
+}
+.hero .kicker{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+}
+.hero .kicker::before{
+  content:"";
+  width:26px;height:1px;background:var(--ink-faint);
+}
+.hero h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:clamp(34px,5.2vw,54px);
+  line-height:1.08;
+  margin:0 0 20px;
+  letter-spacing:-0.01em;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(180deg, transparent 62%, var(--amber-bg) 62%);
+  color:var(--amber);
+}
+.hero p{
+  font-size:17px;
+  line-height:1.6;
+  color:var(--ink-soft);
+  max-width:620px;
+  margin:0 0 28px;
+}
+.hero-meta{
+  display:flex; flex-wrap:wrap; gap:10px;
+}
+.pill{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  padding:6px 12px;
+  border-radius:20px;
+  color:var(--ink-soft);
+}
+
+/* NAV / TABS */
+.nav-wrap{
+  position:sticky; top:0; z-index:20;
+  background:rgba(238,242,247,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--border);
+}
+.nav{
+  max-width:980px;
+  margin:0 auto;
+  padding:14px 28px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.nav-search{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:8px;
+  padding:8px 12px;
+  width:200px;
+  color:var(--ink);
+}
+.nav-search::placeholder{color:var(--ink-faint);}
+.tab{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12.5px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  padding:7px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  color:var(--ink-soft);
+  white-space:nowrap;
+}
+.tab:hover{border-color:var(--ink-faint); color:var(--ink);}
+.tab.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+/* MAIN */
+main{max-width:980px; margin:0 auto; padding:36px 28px 100px;}
+section.cat{margin-bottom:56px; scroll-margin-top:78px;}
+.cat-head{
+  display:flex; align-items:baseline; gap:14px;
+  margin-bottom:6px;
+  padding-bottom:10px;
+  border-bottom:1.5px solid var(--cat-color);
+}
+.cat-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  color:var(--cat-color);
+}
+.cat-head h2{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:23px;
+  margin:0;
+  letter-spacing:-0.01em;
+}
+.cat-desc{
+  font-size:14.5px;
+  color:var(--ink-soft);
+  margin:10px 0 22px;
+  max-width:640px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:18px 18px 16px;
+  position:relative;
+  transition:box-shadow .15s ease, transform .15s ease;
+  display:flex;
+  flex-direction:column;
+}
+.card::before{
+  content:"";
+  position:absolute; top:0; left:16px;
+  width:34px; height:8px;
+  background:var(--cat-color-bg);
+  border:1px solid var(--cat-color);
+  border-top:none;
+  border-radius:0 0 4px 4px;
+}
+.card:hover{box-shadow:0 6px 18px rgba(22,33,58,0.08); transform:translateY(-1px);}
+.card h3{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:16px;
+  margin:10px 0 4px;
+  line-height:1.3;
+}
+.card .use{
+  font-size:12.5px;
+  color:var(--ink-faint);
+  margin:0 0 12px;
+  line-height:1.5;
+}
+.tmpl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12.3px;
+  line-height:1.65;
+  background:var(--cat-color-bg);
+  border:1px solid var(--border-soft);
+  border-radius:6px;
+  padding:12px 13px;
+  white-space:pre-wrap;
+  color:var(--ink);
+  flex:1;
+  margin:0 0 12px;
+}
+.tmpl .ph{color:var(--cat-color); font-weight:500;}
+.copy-btn{
+  align-self:flex-start;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11.5px;
+  letter-spacing:.03em;
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--ink-soft);
+  padding:6px 11px;
+  border-radius:6px;
+  cursor:pointer;
+}
+.copy-btn:hover{border-color:var(--cat-color); color:var(--cat-color);}
+.copy-btn.copied{background:var(--cat-color); color:#fff; border-color:var(--cat-color);}
+
+footer{
+  max-width:980px; margin:0 auto; padding:20px 28px 60px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px; color:var(--ink-faint);
+  border-top:1px solid var(--border);
+}
+
+@media (max-width:600px){
+  .hero{padding:52px 18px 28px;}
+  main{padding:24px 18px 80px;}
+  .nav{padding:12px 18px;}
+  .nav-search{width:140px;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="kicker">Sổ tay thực hành · 72 mẫu prompt</div>
+  <h1>Dùng AI hiệu quả hơn<br>bắt đầu từ <em>câu hỏi tốt hơn</em>.</h1>
+  <p>Một bộ prompt mẫu chia theo 20 nhóm mục đích thường gặp — từ công việc, học tập, cảm xúc, sức khỏe, tài chính đến những điều tò mò hiển nhiên quanh mình. Copy mẫu, điền vào chỗ ngoặc vuông <code>[ ]</code>, chỉnh theo tình huống thực tế của bạn — coi đây là điểm khởi đầu, không phải công thức cứng. Với các chủ đề pháp lý, tài chính, sức khỏe, tình cảm: kết quả AI chỉ mang tính tham khảo, không thay thế chuyên gia.</p>
+  <div class="hero-meta">
+    <span class="pill">72 prompt</span>
+    <span class="pill">20 nhóm mục đích</span>
+    <span class="pill">Tiếng Việt</span>
+  </div>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav">
+    <input class="nav-search" id="search" placeholder="Tìm theo từ khoá...">
+    <button class="tab active" data-filter="all">Tất cả</button>
+    <button class="tab" data-filter="viet">Viết lách</button>
+    <button class="tab" data-filter="phantich">Phân tích dữ liệu</button>
+    <button class="tab" data-filter="code">Lập trình</button>
+    <button class="tab" data-filter="brainstorm">Brainstorm</button>
+    <button class="tab" data-filter="hoctap">Học tập</button>
+    <button class="tab" data-filter="quyetdinh">Ra quyết định</button>
+    <button class="tab" data-filter="giaotiep">Giao tiếp CV</button>
+    <button class="tab" data-filter="nghiencuu">Nghiên cứu</button>
+    <button class="tab" data-filter="meta">Tinh chỉnh AI</button>
+    <button class="tab" data-filter="eq">EQ &amp; Cảm xúc</button>
+    <button class="tab" data-filter="ngonngu">Phân tích ngôn từ</button>
+    <button class="tab" data-filter="sheet">Apps Script &amp; Sheet</button>
+    <button class="tab" data-filter="docfile">Word &amp; Excel</button>
+    <button class="tab" data-filter="phaply">Pháp lý</button>
+    <button class="tab" data-filter="tinhcam">Tình cảm</button>
+    <button class="tab" data-filter="giacngo">Giác ngộ &amp; Bản thân</button>
+    <button class="tab" data-filter="suckhoe">Ăn uống &amp; Gym</button>
+    <button class="tab" data-filter="taichinh">Tài chính</button>
+    <button class="tab" data-filter="nghenghiep">Nghề &amp; Thu nhập</button>
+    <button class="tab" data-filter="tomo">Tò mò đời thường</button>
+  </div>
+</div>
+
+<main id="main"></main>
+
+<footer>Mẹo: nếu kết quả AI trả về chưa đúng ý, đừng viết lại từ đầu — phản hồi cụ thể phần nào sai và muốn sửa theo hướng nào.</footer>
+
+<script>
+const DATA = [
+{
+  id:"viet", name:"Viết lách & Biên tập", color:"var(--amber)", bg:"var(--amber-bg)", num:"01",
+  desc:"Dùng khi cần soạn email, bài viết, mô tả sản phẩm — bất cứ thứ gì có người đọc cụ thể ở đầu kia.",
+  items:[
+    {t:"Soạn nội dung theo vai trò & đối tượng", use:"Khi cần một bài viết có giọng văn nhất quán, đúng người đọc.",
+     tmpl:`Vai trò: Bạn là [biên tập viên / copywriter chuyên về X]
+Nhiệm vụ: Viết [loại văn bản: email, bài blog, mô tả sản phẩm] về [chủ đề]
+Đối tượng đọc: [họ là ai, biết gì, quan tâm điều gì]
+Giọng văn: [trang trọng / thân mật / hài hước]
+Độ dài: [số từ hoặc số đoạn]
+Yêu cầu bắt buộc: [thông tin phải có]
+Tránh: [điều không muốn xuất hiện]`},
+    {t:"Viết lại theo giọng văn khác", use:"Khi có sẵn bản nháp nhưng cần đổi tông giọng.",
+     tmpl:`Vai trò: Bạn là biên tập viên nhiều kinh nghiệm về giọng văn thương hiệu
+Đây là đoạn văn gốc: [dán văn bản]
+
+Viết lại theo giọng [chuyên nghiệp hơn / gần gũi hơn / ngắn gọn hơn], giữ nguyên ý chính và các số liệu/tên riêng. Không thêm thông tin mới.`},
+    {t:"Rút gọn văn bản dài", use:"Khi có tài liệu dài cần nén lại còn ý cốt lõi.",
+     tmpl:`Vai trò: Bạn là biên tập viên chuyên súc tích hoá nội dung
+Rút gọn đoạn văn sau xuống còn [X câu / X từ], giữ lại thông điệp chính và bỏ chi tiết phụ:
+
+[dán văn bản]
+
+Định dạng: [đoạn văn liền mạch / gạch đầu dòng]`},
+    {t:"Tạo nhiều phương án tiêu đề", use:"Khi cần chọn giữa nhiều cách diễn đạt.",
+     tmpl:`Vai trò: Bạn là copywriter chuyên viết tiêu đề/dòng chủ đề
+Viết 8 phương án [tiêu đề bài viết / dòng chủ đề email / slogan] cho nội dung sau: [mô tả nội dung]
+
+Mỗi phương án theo một hướng khác nhau: [ví dụ: gây tò mò, nêu lợi ích, dùng số liệu, đặt câu hỏi]. Không quá [X] ký tự mỗi phương án.`},
+    {t:"Biên tập & sửa lỗi có giải thích", use:"Khi cần AI vừa sửa vừa dạy mình tại sao sai.",
+     tmpl:`Vai trò: Bạn là biên tập viên tiếng Việt kỹ tính
+Kiểm tra đoạn văn sau về: ngữ pháp, chính tả, mạch ý, độ rõ ràng:
+
+[dán văn bản]
+
+Với mỗi lỗi sửa, ghi chú ngắn gọn lý do. Sau đó đưa ra bản hoàn chỉnh đã sửa.`},
+  ]
+},
+{
+  id:"phantich", name:"Phân tích & Tổng hợp dữ liệu", color:"var(--teal)", bg:"var(--teal-bg)", num:"02",
+  desc:"Dùng khi có báo cáo, số liệu, hoặc văn bản dài cần rút ra insight thay vì chỉ tóm tắt.",
+  items:[
+    {t:"Phân tích theo quy trình 3 bước", use:"Khi có dữ liệu/báo cáo cần hiểu nhanh và có kết luận hành động được.",
+     tmpl:`Vai trò: Bạn là chuyên gia phân tích dữ liệu
+Đây là [dữ liệu / văn bản / báo cáo]: [dán nội dung]
+
+Phân tích theo các bước:
+1. Tóm tắt ý chính (3-5 câu)
+2. Chỉ ra điểm bất thường hoặc mâu thuẫn (nếu có)
+3. Đưa ra 2-3 kết luận/khuyến nghị dựa trên dữ liệu
+
+Định dạng đầu ra: [bảng / danh sách / văn xuôi]`},
+    {t:"So sánh hai tập dữ liệu", use:"Khi cần đối chiếu số liệu giữa hai kỳ hoặc hai nhóm.",
+     tmpl:`Vai trò: Bạn là chuyên gia phân tích kinh doanh
+So sánh hai bộ dữ liệu sau: 
+Bộ A: [dán/mô tả]
+Bộ B: [dán/mô tả]
+
+Chỉ ra: thay đổi lớn nhất, xu hướng chung, và điểm cần lưu ý nếu dùng để ra quyết định. Trình bày dạng bảng.`},
+    {t:"Tìm nguyên nhân gốc rễ", use:"Khi có một hiện tượng bất thường (doanh số giảm, lỗi tăng...) cần truy nguyên nhân.",
+     tmpl:`Vai trò: Bạn là chuyên gia tư vấn giải quyết vấn đề (root-cause analysis)
+Hiện tượng cần phân tích: [mô tả vấn đề, kèm số liệu nếu có]
+Bối cảnh liên quan: [thời điểm, thay đổi gần đây, yếu tố bên ngoài]
+
+Liệt kê các giả thuyết nguyên nhân có thể, sắp xếp theo mức độ khả năng, và gợi ý cách kiểm chứng từng giả thuyết.`},
+    {t:"Trích xuất dữ liệu có cấu trúc", use:"Khi cần chuyển văn bản lộn xộn thành bảng/dữ liệu có thể dùng tiếp.",
+     tmpl:`Vai trò: Bạn là chuyên viên xử lý dữ liệu
+Từ văn bản sau, trích xuất thông tin thành bảng với các cột: [tên cột 1], [tên cột 2], [tên cột 3]
+
+Văn bản: [dán nội dung]
+
+Nếu thiếu dữ liệu ở ô nào, ghi "không rõ" thay vì tự suy đoán.`},
+    {t:"Đánh giá độ tin cậy của số liệu", use:"Khi cần kiểm tra xem một báo cáo/số liệu có đáng ngờ không.",
+     tmpl:`Vai trò: Bạn là kiểm toán viên/chuyên gia thẩm định số liệu
+Đây là số liệu/báo cáo: [dán nội dung]
+
+Đánh giá: nguồn số liệu có rõ ràng không, có mẫu số/cỡ mẫu hợp lý không, có kết luận nào đi quá xa so với dữ liệu thực tế không. Nêu cụ thể điểm nghi ngờ nếu có.`},
+  ]
+},
+{
+  id:"code", name:"Lập trình & Debug", color:"var(--indigo)", bg:"var(--indigo-bg)", num:"03",
+  desc:"Dùng khi viết, sửa lỗi, hoặc review code — càng cụ thể về môi trường và ràng buộc, kết quả càng sát.",
+  items:[
+    {t:"Debug có ngữ cảnh đầy đủ", use:"Khi gặp lỗi và cần AI hiểu đúng tình huống thay vì đoán mò.",
+     tmpl:`Vai trò: Bạn là kỹ sư phần mềm senior chuyên [ngôn ngữ/framework]
+Ngôn ngữ/Framework: [Python, React...]
+Code hiện tại: [dán code]
+Vấn đề gặp phải: [mô tả lỗi/hành vi không mong muốn, kèm error log]
+Kết quả mong muốn: [mô tả rõ]
+Ràng buộc: [không đổi thư viện X, phải tương thích Y]`},
+    {t:"Review code theo tiêu chí cụ thể", use:"Khi cần đánh giá code trước khi merge/deploy.",
+     tmpl:`Vai trò: Bạn là reviewer code cấp senior
+Review đoạn code sau theo các tiêu chí: hiệu năng, khả năng đọc, edge case, bảo mật:
+
+[dán code]
+
+Với mỗi vấn đề tìm thấy: chỉ rõ dòng/đoạn, giải thích rủi ro, đề xuất cách sửa.`},
+    {t:"Giải thích code của người khác", use:"Khi cần hiểu nhanh một đoạn code lạ trước khi chỉnh sửa.",
+     tmpl:`Vai trò: Bạn là kỹ sư phần mềm giàu kinh nghiệm, đang giải thích cho đồng nghiệp mới
+Giải thích đoạn code sau theo từng khối logic, bằng ngôn ngữ dễ hiểu (không cần lặp lại syntax):
+
+[dán code]
+
+Sau đó nêu: đoạn nào là phần quan trọng nhất, và có rủi ro tiềm ẩn nào không.`},
+    {t:"Viết test case", use:"Khi cần bao phủ test cho một hàm/module.",
+     tmpl:`Vai trò: Bạn là kỹ sư QA/kiểm thử phần mềm
+Viết unit test cho hàm sau bằng [framework: pytest, jest...]:
+
+[dán code]
+
+Bao gồm: trường hợp bình thường, trường hợp biên (edge case), trường hợp lỗi đầu vào. Giải thích ngắn gọn mỗi test kiểm tra điều gì.`},
+    {t:"Tối ưu hiệu năng có ràng buộc", use:"Khi code chạy đúng nhưng chậm hoặc tốn tài nguyên.",
+     tmpl:`Vai trò: Bạn là chuyên gia tối ưu hiệu năng hệ thống
+Đoạn code sau đang chạy đúng nhưng [chậm / tốn bộ nhớ]: [dán code]
+Ràng buộc: [không đổi API bên ngoài, giữ nguyên input/output]
+
+Đề xuất cách tối ưu, giải thích đánh đổi (trade-off) của mỗi cách nếu có.`},
+  ]
+},
+{
+  id:"brainstorm", name:"Brainstorm & Sáng tạo ý tưởng", color:"var(--coral)", bg:"var(--coral-bg)", num:"04",
+  desc:"Dùng khi cần nhiều lựa chọn để so sánh, không phải một câu trả lời duy nhất.",
+  items:[
+    {t:"Brainstorm có bộ lọc cuối", use:"Khi cần cả số lượng ý tưởng lẫn một gợi ý chọn lọc.",
+     tmpl:`Vai trò: Bạn là chuyên gia sáng tạo/chiến lược
+Bối cảnh: [đang làm gì, cho ai, mục tiêu là gì]
+
+Đưa ra [số lượng] ý tưởng về [chủ đề], mỗi ý tưởng gồm:
+- Tên/tiêu đề ngắn gọn
+- Mô tả 1-2 câu
+- Ưu điểm chính
+
+Sau đó chọn 3 ý tưởng khả thi nhất và giải thích tại sao.`},
+    {t:"Đóng vai nhiều góc nhìn", use:"Khi cần ý tưởng đa dạng thay vì một kiểu tư duy lặp lại.",
+     tmpl:`Hãy đề xuất ý tưởng cho [vấn đề/chủ đề] từ 3 góc nhìn khác nhau:
+1. Góc nhìn của [chuyên gia tài chính]
+2. Góc nhìn của [người dùng cuối]
+3. Góc nhìn của [người phản biện/skeptic]
+
+Mỗi góc nhìn đưa 2-3 ý tưởng riêng, không trộn lẫn.`},
+    {t:"Mở rộng một ý tưởng có sẵn", use:"Khi đã có ý tưởng thô, cần đào sâu thành phương án khả thi.",
+     tmpl:`Vai trò: Bạn là cố vấn sản phẩm (product strategist)
+Ý tưởng ban đầu: [mô tả]
+
+Hãy: 
+1. Nêu 3 cách triển khai khác nhau cho ý tưởng này
+2. Với mỗi cách, chỉ ra rủi ro lớn nhất
+3. Gợi ý một bước thử nghiệm nhỏ (MVP) để kiểm chứng nhanh`},
+    {t:"Đặt câu hỏi ngược để làm rõ vấn đề", use:"Khi vấn đề còn mơ hồ, cần AI giúp đào sâu trước khi brainstorm.",
+     tmpl:`Vai trò: Bạn là facilitator chuyên đặt câu hỏi khám phá vấn đề
+Tôi đang muốn giải quyết vấn đề: [mô tả sơ bộ]
+
+Trước khi đưa giải pháp, hãy đặt cho tôi 5 câu hỏi để làm rõ vấn đề hơn (mục tiêu thật sự, ràng buộc, ai bị ảnh hưởng...).`},
+  ]
+},
+{
+  id:"hoctap", name:"Học tập & Giải thích khái niệm", color:"var(--violet)", bg:"var(--violet-bg)", num:"05",
+  desc:"Dùng khi học một chủ đề mới hoặc cần hiểu sâu hơn một khái niệm quen thuộc.",
+  items:[
+    {t:"Giải thích theo trình độ + kiểm tra hiểu bài", use:"Khi học khái niệm mới và muốn tự kiểm tra ngay.",
+     tmpl:`Vai trò: Bạn là giáo viên/gia sư tận tâm
+Giải thích [khái niệm] cho người có trình độ [mới bắt đầu / trung cấp / chuyên gia lĩnh vực khác]
+Dùng ví dụ thực tế hoặc phép so sánh (analogy) để minh họa
+
+Sau khi giải thích, đặt cho tôi 2-3 câu hỏi kiểm tra hiểu bài.`},
+    {t:"Học bằng phương pháp Feynman", use:"Khi muốn kiểm tra xem mình đã thật sự hiểu hay chỉ nhớ mặt chữ.",
+     tmpl:`Vai trò: Bạn đóng vai giám khảo kiểm tra kiến thức
+Tôi sẽ giải thích [khái niệm] theo cách hiểu của tôi: [viết phần giải thích của bạn]
+
+Hãy chỉ ra: phần nào tôi hiểu đúng, phần nào sai hoặc chưa đầy đủ, và một câu hỏi hóc búa để kiểm tra độ hiểu sâu.`},
+    {t:"So sánh hai khái niệm dễ nhầm lẫn", use:"Khi hai khái niệm nghe giống nhau nhưng bản chất khác.",
+     tmpl:`Vai trò: Bạn là giảng viên chuyên ngành [lĩnh vực]
+So sánh [khái niệm A] và [khái niệm B]:
+- Điểm giống nhau
+- Điểm khác nhau cốt lõi
+- Khi nào dùng cái nào
+
+Dùng ví dụ cụ thể trong [lĩnh vực/ngành] để minh họa, không nói chung chung.`},
+    {t:"Lộ trình học từ số 0", use:"Khi muốn bắt đầu học một lĩnh vực mới có định hướng.",
+     tmpl:`Vai trò: Bạn là cố vấn học tập (mentor) xây lộ trình cá nhân hoá
+Tôi muốn học [chủ đề], xuất phát điểm: [mô tả trình độ hiện tại]
+Thời gian có thể dành: [X giờ/tuần]
+Mục tiêu cuối: [làm được gì sau khi học]
+
+Gợi ý lộ trình học theo giai đoạn, mỗi giai đoạn nêu rõ nên học gì và làm sao biết đã sẵn sàng qua giai đoạn tiếp theo.`},
+  ]
+},
+{
+  id:"quyetdinh", name:"Ra quyết định & So sánh", color:"var(--slate)", bg:"var(--slate-bg)", num:"06",
+  desc:"Dùng khi cần cân nhắc giữa các lựa chọn — để AI trình bày khách quan, không thay bạn quyết định.",
+  items:[
+    {t:"So sánh khách quan không kết luận hộ", use:"Khi muốn tự quyết định, chỉ cần dữ kiện rõ ràng.",
+     tmpl:`Vai trò: Bạn là cố vấn khách quan, không thiên vị
+Tôi đang cân nhắc giữa: [A] và [B]
+Bối cảnh của tôi: [ngân sách, thời gian, mục tiêu]
+
+So sánh theo các tiêu chí: [chi phí, thời gian, rủi ro]
+Không cần đưa khuyến nghị cuối — chỉ trình bày ưu/nhược khách quan để tôi tự quyết định.`},
+    {t:"Phân tích rủi ro trước khi quyết định", use:"Khi quyết định có mức độ rủi ro/tác động lớn.",
+     tmpl:`Vai trò: Bạn là chuyên gia quản trị rủi ro
+Quyết định cần đưa ra: [mô tả]
+Phương án đang cân nhắc: [liệt kê]
+
+Với mỗi phương án, liệt kê: rủi ro lớn nhất, điều kiện khiến phương án thất bại, cách giảm thiểu rủi ro đó.`},
+    {t:"Đóng vai người phản biện", use:"Khi đã có xu hướng nghiêng về một lựa chọn, muốn kiểm tra lại.",
+     tmpl:`Vai trò: Bạn là người phản biện khó tính (devil's advocate)
+Tôi đang nghiêng về lựa chọn: [phương án]
+Lý do của tôi: [giải thích]
+
+Hãy đóng vai người phản biện khó tính, chỉ ra những điểm yếu trong lập luận của tôi và những rủi ro tôi có thể đang bỏ qua.`},
+    {t:"Ma trận quyết định có trọng số", use:"Khi có nhiều tiêu chí quan trọng khác nhau cần cân đối.",
+     tmpl:`Vai trò: Bạn là chuyên gia phân tích quyết định (decision analyst)
+Các lựa chọn: [A, B, C]
+Tiêu chí đánh giá và mức độ quan trọng (1-5): [tiêu chí 1: trọng số X, tiêu chí 2: trọng số Y...]
+
+Lập bảng ma trận quyết định, chấm điểm từng lựa chọn theo từng tiêu chí, tính tổng có trọng số, và giải thích ngắn gọn cách chấm.`},
+  ]
+},
+{
+  id:"giaotiep", name:"Giao tiếp công việc", color:"var(--rose)", bg:"var(--rose-bg)", num:"07",
+  desc:"Dùng cho email, phản hồi, chuẩn bị họp — nơi giọng điệu và ngữ cảnh quan hệ ảnh hưởng nhiều đến kết quả.",
+  items:[
+    {t:"Soạn email nhạy cảm", use:"Khi cần truyền đạt tin không vui hoặc yêu cầu khó (từ chối, xin gia hạn...).",
+     tmpl:`Vai trò: Bạn là chuyên gia giao tiếp công sở
+Tình huống: [mô tả, ví dụ: từ chối đề xuất của đồng nghiệp / xin gia hạn deadline]
+Mối quan hệ với người nhận: [sếp / đồng nghiệp ngang cấp / đối tác]
+Điều tôi muốn đạt được: [mục tiêu cụ thể]
+Điều cần tránh: [làm mất lòng, nghe như đổ lỗi...]
+
+Soạn email ngắn gọn, rõ ràng, giữ thiện chí.`},
+    {t:"Chuẩn bị nội dung cho buổi họp", use:"Khi cần dẫn dắt hoặc tham gia một cuộc họp quan trọng.",
+     tmpl:`Vai trò: Bạn là trợ lý điều hành chuẩn bị nội dung họp
+Chủ đề họp: [mô tả]
+Người tham dự: [vai trò của họ]
+Mục tiêu buổi họp: [quyết định gì, thống nhất gì]
+
+Soạn: 3-5 điểm chính cần trình bày, 2 câu hỏi dự kiến khó nhất có thể gặp và cách trả lời, và một kết luận đề xuất cho cuối buổi họp.`},
+    {t:"Phản hồi mang tính xây dựng", use:"Khi cần góp ý cho đồng nghiệp/cấp dưới mà không gây tổn thương.",
+     tmpl:`Vai trò: Bạn là quản lý giàu kinh nghiệm coaching nhân viên
+Tôi cần phản hồi về: [công việc/hành vi cụ thể]
+Vấn đề: [mô tả điều chưa ổn]
+Mối quan hệ: [đồng nghiệp / cấp dưới]
+
+Soạn phản hồi theo cấu trúc: ghi nhận điểm tốt trước, nêu vấn đề cụ thể (không chung chung), đề xuất hướng cải thiện, kết thúc bằng khích lệ.`},
+    {t:"Tóm tắt cuộc trò chuyện/email dài", use:"Khi có luồng trao đổi dài cần nắm nhanh trước khi trả lời.",
+     tmpl:`Vai trò: Bạn là trợ lý cá nhân tóm tắt thông tin nhanh
+Đây là chuỗi email/tin nhắn: [dán nội dung]
+
+Tóm tắt: ai đang yêu cầu gì, điểm chưa thống nhất là gì, và việc gì đang chờ tôi phản hồi. Ngắn gọn trong 5 dòng.`},
+    {t:"Soạn tin nhắn từ chối lịch sự", use:"Khi cần từ chối một lời mời/đề nghị mà vẫn giữ quan hệ tốt.",
+     tmpl:`Vai trò: Bạn là chuyên gia giao tiếp khéo léo
+Tôi cần từ chối: [lời mời/đề nghị cụ thể]
+Lý do thật: [lý do của bạn]
+Mức độ thân thiết: [thân / xã giao]
+
+Soạn tin nhắn từ chối ngắn gọn, chân thành, không cần giải thích quá chi tiết lý do.`},
+  ]
+},
+{
+  id:"nghiencuu", name:"Nghiên cứu & Tóm tắt tài liệu", color:"var(--olive)", bg:"var(--olive-bg)", num:"08",
+  desc:"Dùng khi cần đọc nhanh tài liệu dài hoặc tổng hợp thông tin từ nhiều nguồn.",
+  items:[
+    {t:"Tóm tắt tài liệu theo cấu trúc", use:"Khi có tài liệu/báo cáo dài cần nắm ý chính nhanh.",
+     tmpl:`Vai trò: Bạn là nhà nghiên cứu/biên tập tóm tắt tài liệu
+Tóm tắt tài liệu sau: [dán nội dung hoặc mô tả]
+
+Cấu trúc tóm tắt:
+1. Vấn đề/mục tiêu tài liệu đề cập
+2. 3-5 luận điểm chính
+3. Kết luận hoặc khuyến nghị (nếu có)
+
+Giữ độ dài dưới [X từ].`},
+    {t:"Đặt câu hỏi trước khi đọc sâu", use:"Khi muốn đọc tài liệu có định hướng thay vì đọc tràn lan.",
+     tmpl:`Vai trò: Bạn là cố vấn nghiên cứu giúp định hướng đọc
+Tôi sắp đọc tài liệu về: [chủ đề]
+Mục đích đọc: [để làm gì — ra quyết định, viết báo cáo, học...]
+
+Gợi ý cho tôi 5 câu hỏi nên tìm câu trả lời khi đọc tài liệu này, để tôi đọc có trọng tâm.`},
+    {t:"Tổng hợp từ nhiều nguồn", use:"Khi có nhiều đoạn trích/nguồn cần gộp thành một bức tranh chung.",
+     tmpl:`Vai trò: Bạn là nhà phân tích tổng hợp thông tin đa nguồn
+Đây là các đoạn trích từ nhiều nguồn về [chủ đề]:
+Nguồn 1: [dán]
+Nguồn 2: [dán]
+Nguồn 3: [dán]
+
+Tổng hợp thành: điểm các nguồn đồng thuận, điểm mâu thuẫn giữa các nguồn, và khoảng trống thông tin còn thiếu.`},
+    {t:"Kiểm tra logic của một lập luận", use:"Khi cần đánh giá độ chắc chắn của một bài viết/lập luận trước khi tin.",
+     tmpl:`Vai trò: Bạn là chuyên gia tư duy phản biện (critical thinker)
+Đây là một lập luận/bài viết: [dán nội dung]
+
+Phân tích: luận điểm chính là gì, bằng chứng đưa ra có đủ mạnh không, có lỗ hổng logic hoặc giả định chưa kiểm chứng nào không.`},
+  ]
+},
+{
+  id:"meta", name:"Tinh chỉnh & Phản biện AI Output", color:"var(--ink)", bg:"var(--border-soft)", num:"09",
+  desc:"Meta-prompt: dùng để cải thiện chính kết quả AI vừa trả lời, thay vì viết lại từ đầu.",
+  items:[
+    {t:"Yêu cầu chỉnh sửa có mục tiêu", use:"Khi output gần đúng nhưng còn một điểm cần sửa.",
+     tmpl:`Vai trò: Bạn là biên tập viên tinh chỉnh nội dung
+Trong câu trả lời trên, phần [nêu cụ thể phần nào] chưa đúng vì [lý do].
+Hãy sửa lại phần đó theo hướng: [mô tả hướng mong muốn], giữ nguyên các phần còn lại.`},
+    {t:"Yêu cầu AI tự phản biện chính nó", use:"Khi muốn kiểm tra độ tin cậy của câu trả lời trước khi dùng.",
+     tmpl:`Vai trò: Bạn là người phản biện nghiêm khắc, tự đánh giá lại câu trả lời của chính mình
+Xem lại câu trả lời vừa rồi và tự đánh giá:
+- Điểm nào có khả năng sai hoặc chưa chắc chắn?
+- Giả định nào đã đưa ra mà chưa được xác nhận?
+- Nếu phải phản biện câu trả lời này, bạn sẽ phản biện điểm nào?`},
+    {t:"Rút gọn/mở rộng theo yêu cầu chính xác", use:"Khi độ dài câu trả lời chưa phù hợp mục đích dùng.",
+     tmpl:`Vai trò: Bạn là biên tập viên điều chỉnh độ dài nội dung theo mục đích sử dụng
+Viết lại câu trả lời trên nhưng: [ngắn hơn còn X câu / chi tiết hơn ở phần Y / bỏ phần Z]
+Mục đích dùng: [để gửi cho ai, dùng làm gì] — điều này ảnh hưởng đến việc nên giữ hay bỏ chi tiết nào.`},
+    {t:"Yêu cầu nhiều phương án thay vì một", use:"Khi câu trả lời đầu tiên quá một chiều, cần thêm lựa chọn để so sánh.",
+     tmpl:`Vai trò: Bạn là cố vấn chiến lược đưa ra nhiều phương án tiếp cận
+Đưa thêm 2 phương án khác cho câu trả lời trên, mỗi phương án đi theo một hướng tiếp cận khác biệt rõ rệt (không chỉ diễn đạt lại). Nêu ngắn gọn phương án nào phù hợp trong tình huống nào.`},
+  ]
+},
+{
+  id:"eq", name:"EQ & Giao tiếp cảm xúc", color:"var(--plum)", bg:"var(--plum-bg)", num:"10",
+  desc:"Dùng khi cần hiểu cảm xúc của mình/người khác, xử lý xung đột, hoặc phản ứng bình tĩnh hơn trong giao tiếp.",
+  items:[
+    {t:"Giải mã tình huống giao tiếp khó", use:"Khi vừa trải qua cuộc nói chuyện khó chịu và muốn hiểu chuyện gì đã xảy ra.",
+     tmpl:`Vai trò: Bạn là chuyên gia tâm lý giao tiếp
+Tình huống: [mô tả cuộc trò chuyện/xung đột vừa xảy ra]
+Cảm xúc của tôi lúc đó: [mô tả]
+
+Phân tích: điều gì có thể đã khiến tình huống căng thẳng, tôi có thể đã hiểu sai điều gì, và 2 cách phản ứng khác tôi có thể thử lần sau.`},
+    {t:"Luyện phản hồi bình tĩnh trước khi trả lời", use:"Khi nhận tin nhắn/email khiến mình tức giận và muốn trả lời khôn ngoan hơn.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên giao tiếp phi bạo lực (nonviolent communication)
+Tin nhắn tôi nhận được: [dán nguyên văn]
+Cảm xúc của tôi khi đọc: [mô tả]
+
+Giúp tôi soạn 1 câu trả lời giữ được ranh giới cá nhân nhưng không gây leo thang xung đột. Giải thích ngắn gọn vì sao cách diễn đạt đó hiệu quả hơn phản ứng theo cảm xúc ban đầu.`},
+    {t:"Tự nhận diện cảm xúc (journaling có định hướng)", use:"Khi cảm thấy khó chịu nhưng chưa gọi tên được cảm xúc.",
+     tmpl:`Vai trò: Bạn là người đồng hành lắng nghe, không phán xét
+Hôm nay tôi cảm thấy: [mô tả tình trạng, sự kiện xảy ra]
+
+Đặt cho tôi 3-4 câu hỏi mở để tôi tự khám phá cảm xúc thật sự đằng sau, không đưa kết luận hộ tôi.`},
+    {t:"Chuẩn bị trước một cuộc trò chuyện khó", use:"Trước khi nói chuyện nhạy cảm với ai đó (góp ý, chia tay, xin lỗi...).",
+     tmpl:`Vai trò: Bạn là chuyên gia giao tiếp trong các tình huống nhạy cảm
+Tôi sắp nói chuyện với: [ai, mối quan hệ]
+Nội dung cần trao đổi: [mô tả]
+Điều tôi lo sợ sẽ xảy ra: [mô tả]
+
+Gợi ý cách mở đầu cuộc trò chuyện, 2 điều nên tránh nói, và cách xử lý nếu đối phương phản ứng phòng thủ.`},
+  ]
+},
+{
+  id:"ngonngu", name:"Phân tích ngôn từ & Hội thoại", color:"var(--steel)", bg:"var(--steel-bg)", num:"11",
+  desc:"Dùng khi cần đọc hiểu ẩn ý, nhận diện thao túng, hoặc chọn giọng điệu phù hợp trong tin nhắn.",
+  items:[
+    {t:"Phân tích ẩn ý trong tin nhắn", use:"Khi nhận một tin nhắn mơ hồ và không chắc ý thật sự là gì.",
+     tmpl:`Vai trò: Bạn là chuyên gia phân tích ngôn ngữ giao tiếp
+Tin nhắn nhận được: [dán nguyên văn]
+Bối cảnh mối quan hệ: [ai gửi, quan hệ thế nào, chuyện gì đang xảy ra]
+
+Phân tích: nghĩa đen của tin nhắn, các cách hiểu ngầm có thể có, và tín hiệu nào (từ ngữ, cách viết) gợi ý về tâm trạng người gửi. Không suy diễn quá đà nếu thông tin chưa đủ rõ.`},
+    {t:"Nhận diện dấu hiệu thao túng trong hội thoại", use:"Khi nghi ngờ một cuộc trò chuyện có dấu hiệu bị thao túng cảm xúc.",
+     tmpl:`Vai trò: Bạn là chuyên gia tâm lý về giao tiếp độc hại
+Đoạn hội thoại: [dán nguyên văn]
+
+Chỉ ra: có dấu hiệu thao túng/đổ lỗi/phủ nhận cảm xúc hay không, dẫn chứng cụ thể câu nào, và gợi ý cách phản hồi giữ vững lập trường của tôi.`},
+    {t:"So sánh giọng điệu giữa các phiên bản tin nhắn", use:"Khi phân vân giữa nhiều cách trả lời, muốn biết cái nào nghe ổn nhất.",
+     tmpl:`Vai trò: Bạn là biên tập viên phân tích giọng điệu văn bản
+Đây là các phiên bản tin nhắn tôi định gửi:
+1. [phiên bản 1]
+2. [phiên bản 2]
+3. [phiên bản 3]
+
+Với mỗi phiên bản, mô tả người đọc có thể cảm nhận giọng điệu thế nào (thân thiện/lạnh lùng/mỉa mai...). Gợi ý phiên bản phù hợp nhất với mục tiêu: [mô tả mục tiêu].`},
+  ]
+},
+{
+  id:"sheet", name:"Google Apps Script & Sheet", color:"var(--forest)", bg:"var(--forest-bg)", num:"12",
+  desc:"Dùng khi cần viết script tự động hoá hoặc công thức xử lý dữ liệu trong Google Sheets.",
+  items:[
+    {t:"Viết Apps Script theo yêu cầu cụ thể", use:"Khi cần tự động hoá một tác vụ lặp lại trong Sheet.",
+     tmpl:`Vai trò: Bạn là chuyên gia Google Apps Script
+Mục tiêu script: [mô tả việc cần tự động hoá]
+Cấu trúc dữ liệu hiện có: [mô tả các cột, sheet liên quan]
+Điều kiện kích hoạt: [chạy thủ công / theo thời gian / khi mở file / khi sửa ô]
+
+Viết script kèm chú thích từng đoạn, và hướng dẫn cách gắn vào Sheet (Extensions > Apps Script).`},
+    {t:"Viết công thức Sheet cho bài toán cụ thể", use:"Khi cần một công thức xử lý dữ liệu nhưng không biết dùng hàm gì.",
+     tmpl:`Vai trò: Bạn là chuyên gia công thức Google Sheets
+Tôi muốn: [mô tả kết quả mong muốn]
+Dữ liệu đầu vào: [mô tả cột/vị trí ô, ví dụ cụ thể]
+
+Đưa ra công thức, giải thích từng phần công thức làm gì, và lưu ý nếu công thức có giới hạn (VD: không xử lý được ô trống, cần định dạng ngày tháng đúng...).`},
+    {t:"Debug lỗi công thức/script", use:"Khi công thức hoặc script báo lỗi hoặc ra kết quả sai.",
+     tmpl:`Vai trò: Bạn là chuyên gia gỡ lỗi Google Sheets/Apps Script
+Công thức/script hiện tại: [dán]
+Lỗi gặp phải hoặc kết quả sai: [mô tả, kèm thông báo lỗi nếu có]
+Kết quả mong muốn: [mô tả]
+
+Chỉ ra nguyên nhân lỗi và đưa bản sửa hoàn chỉnh.`},
+    {t:"Thiết kế cấu trúc Sheet cho hệ thống quản lý", use:"Khi muốn xây một file Sheet quản lý (chi tiêu, khách hàng, dự án...) từ đầu.",
+     tmpl:`Vai trò: Bạn là chuyên gia thiết kế hệ thống quản lý bằng Sheet
+Tôi muốn quản lý: [chi tiêu cá nhân / khách hàng / dự án...]
+Thông tin cần theo dõi: [liệt kê các trường dữ liệu]
+Cách tôi sẽ dùng: [xem báo cáo hàng tuần, chia sẻ với team...]
+
+Đề xuất cấu trúc các sheet (tên sheet, cột), công thức tổng hợp cần thiết, và gợi ý cách trực quan hoá (biểu đồ/pivot) nếu phù hợp.`},
+  ]
+},
+{
+  id:"docfile", name:"Tạo file Word & Excel", color:"var(--wood)", bg:"var(--wood-bg)", num:"13",
+  desc:"Dùng để AI giúp định hình nội dung/cấu trúc trước khi tạo file thực tế (ví dụ với Claude, chỉ cần mô tả — Claude tạo file trực tiếp).",
+  items:[
+    {t:"Định hình cấu trúc báo cáo Word", use:"Trước khi tạo file Word cần rõ bố cục sẽ có mục gì.",
+     tmpl:`Vai trò: Bạn là chuyên gia soạn thảo tài liệu chuyên nghiệp
+Tôi cần tạo file Word: [loại tài liệu: báo cáo, hợp đồng, CV, đề xuất...]
+Mục đích sử dụng: [gửi cho ai, dùng để làm gì]
+Nội dung chính cần có: [liệt kê ý chính]
+
+Đề xuất cấu trúc mục lục (heading các cấp), và với mỗi mục, gợi ý nội dung nên viết gì. Sau đó tạo file Word hoàn chỉnh theo cấu trúc này.`},
+    {t:"Thiết kế bảng tính Excel có công thức", use:"Trước khi tạo file Excel cần rõ các cột và công thức liên kết.",
+     tmpl:`Vai trò: Bạn là chuyên gia mô hình hoá bảng tính Excel
+Tôi cần tạo file Excel để: [theo dõi ngân sách / lập kế hoạch / tính toán X]
+Dữ liệu đầu vào: [liệt kê]
+Kết quả đầu ra cần thấy: [số liệu/biểu đồ cần có]
+
+Đề xuất cấu trúc các cột/sheet, công thức cần dùng ở đâu, và tạo file Excel hoàn chỉnh với công thức và định dạng có điều kiện nếu phù hợp.`},
+    {t:"Chuyển văn bản thô thành tài liệu chuyên nghiệp", use:"Khi có nội dung rồi nhưng cần sắp xếp lại cho gọn gàng, chuyên nghiệp.",
+     tmpl:`Vai trò: Bạn là biên tập viên trình bày tài liệu
+Đây là nội dung thô: [dán nội dung]
+Loại tài liệu đích: [Word / Excel]
+Đối tượng đọc: [ai sẽ xem tài liệu này]
+
+Sắp xếp lại thành cấu trúc rõ ràng (tiêu đề, mục, bảng nếu phù hợp), giữ nguyên thông tin gốc, và tạo thành file hoàn chỉnh.`},
+  ]
+},
+{
+  id:"phaply", name:"Pháp lý cơ bản", color:"var(--maroon)", bg:"var(--maroon-bg)", num:"14",
+  desc:"Dùng để hiểu khái niệm pháp lý và chuẩn bị câu hỏi — không thay thế tư vấn từ luật sư, đặc biệt với vụ việc có giá trị pháp lý thực tế.",
+  items:[
+    {t:"Giải thích điều khoản hợp đồng khó hiểu", use:"Khi đọc hợp đồng gặp điều khoản không rõ nghĩa.",
+     tmpl:`Vai trò: Bạn là chuyên gia giải thích thuật ngữ pháp lý cho người không chuyên
+Điều khoản: [dán nguyên văn điều khoản]
+Bối cảnh hợp đồng: [loại hợp đồng, các bên liên quan]
+
+Giải thích điều khoản này có nghĩa gì trong thực tế, quyền/nghĩa vụ của mỗi bên là gì, và những câu hỏi tôi nên hỏi luật sư/bên soạn hợp đồng nếu còn chưa rõ.`},
+    {t:"Chuẩn bị câu hỏi trước khi gặp luật sư", use:"Để tận dụng tối đa thời gian tư vấn với luật sư.",
+     tmpl:`Vai trò: Bạn là trợ lý pháp lý giúp chuẩn bị hồ sơ hỏi đáp
+Vấn đề pháp lý tôi gặp phải: [mô tả tình huống]
+Thông tin tôi đã có: [giấy tờ, mốc thời gian, bằng chứng]
+
+Liệt kê các câu hỏi quan trọng tôi nên hỏi luật sư, và các giấy tờ tôi nên mang theo, dựa trên loại vấn đề này.`},
+    {t:"Hiểu quy trình pháp lý ở mức tổng quan", use:"Khi cần nắm quy trình chung trước khi thực hiện thủ tục nào đó.",
+     tmpl:`Vai trò: Bạn là chuyên gia phổ biến kiến thức pháp luật phổ thông
+Tôi cần hiểu quy trình: [ví dụ: đăng ký kinh doanh, khiếu nại lao động, ly hôn thuận tình...]
+Bối cảnh của tôi: [tỉnh/thành, tình huống cụ thể]
+
+Giải thích các bước chính theo trình tự, thời gian dự kiến mỗi bước, và lưu ý rằng quy định có thể thay đổi nên cần xác nhận lại với cơ quan có thẩm quyền hoặc luật sư.`},
+  ]
+},
+{
+  id:"tinhcam", name:"Tư vấn tình cảm", color:"var(--cherry)", bg:"var(--cherry-bg)", num:"15",
+  desc:"Dùng để sắp xếp suy nghĩ và chuẩn bị lời nói — mang tính tham khảo, quyết định cuối cùng nên dựa trên sự thấu hiểu thực tế mối quan hệ của bạn.",
+  items:[
+    {t:"Sắp xếp suy nghĩ trước khi nói chuyện tình cảm", use:"Khi rối bời cảm xúc và cần nhìn vấn đề rõ ràng hơn trước khi nói chuyện với đối phương.",
+     tmpl:`Vai trò: Bạn là người lắng nghe trung lập, không phán xét
+Tình huống: [mô tả chuyện đang xảy ra trong mối quan hệ]
+Điều tôi đang cảm thấy: [mô tả]
+Điều tôi thực sự muốn: [mô tả nếu đã rõ, hoặc để trống nếu chưa]
+
+Giúp tôi tách bạch: đâu là sự kiện thực tế, đâu là cảm xúc/diễn giải của tôi, và 2-3 câu hỏi tôi nên tự hỏi trước khi quyết định nói gì.`},
+    {t:"Soạn lời muốn nói nhưng khó diễn đạt", use:"Khi biết mình muốn nói gì nhưng sợ diễn đạt sai ý hoặc gây tổn thương.",
+     tmpl:`Vai trò: Bạn là người hỗ trợ diễn đạt cảm xúc chân thành
+Điều tôi muốn nói với [người yêu/bạn đời/người ấy]: [mô tả ý chính]
+Điều tôi lo ngại khi nói ra: [mô tả]
+
+Giúp tôi diễn đạt thành lời chân thành, rõ ràng, không đổ lỗi, dùng cách nói "tôi cảm thấy" thay vì "bạn luôn luôn".`},
+    {t:"Nhìn nhận lại một mối quan hệ", use:"Khi phân vân không biết mối quan hệ có đang lành mạnh hay không.",
+     tmpl:`Vai trò: Bạn là người đồng hành giúp tôi tự phản ánh, không đưa kết luận thay tôi
+Mô tả mối quan hệ: [thời gian quen biết, những gì đang diễn ra]
+Điều khiến tôi phân vân: [mô tả]
+
+Đặt cho tôi các câu hỏi phản ánh (không phán xét) giúp tôi tự nhìn rõ hơn cảm xúc và nhu cầu thật sự của mình trong mối quan hệ này.`},
+  ]
+},
+{
+  id:"giacngo", name:"Giác ngộ & Phát triển bản thân", color:"var(--dusk)", bg:"var(--dusk-bg)", num:"16",
+  desc:"Dùng như công cụ hỗ trợ suy ngẫm — không phải câu trả lời tuyệt đối cho các câu hỏi triết học/tâm linh của riêng bạn.",
+  items:[
+    {t:"Khám phá giá trị sống cốt lõi", use:"Khi cảm thấy mất phương hướng, không biết mình thực sự coi trọng điều gì.",
+     tmpl:`Vai trò: Bạn là người hướng dẫn phản tư (reflective coach)
+Bối cảnh hiện tại: [mô tả giai đoạn cuộc sống, điều khiến bạn trăn trở]
+
+Đặt cho tôi 5 câu hỏi sâu giúp tôi tự khám phá giá trị sống cốt lõi của mình, không đưa ra danh sách giá trị có sẵn để tôi chọn.`},
+    {t:"Đối thoại về một câu hỏi triết học lớn", use:"Khi muốn đào sâu suy nghĩ về ý nghĩa cuộc sống, cái chết, tự do...",
+     tmpl:`Vai trò: Bạn là người đối thoại triết học, trình bày đa góc nhìn thay vì áp đặt một quan điểm
+Câu hỏi tôi đang trăn trở: [mô tả]
+
+Trình bày 2-3 trường phái tư tưởng/tôn giáo khác nhau đã nhìn nhận câu hỏi này như thế nào, và đặt lại cho tôi một câu hỏi để tôi tiếp tục suy ngẫm theo hướng riêng của mình.`},
+    {t:"Bài hướng dẫn chánh niệm ngắn bằng văn bản", use:"Khi muốn một bài hướng dẫn thiền/thở ngắn phù hợp với trạng thái hiện tại.",
+     tmpl:`Vai trò: Bạn là người hướng dẫn thực hành chánh niệm
+Trạng thái hiện tại của tôi: [căng thẳng / bồn chồn / mất ngủ...]
+Thời gian tôi có: [5 phút / 10 phút]
+
+Viết một bài hướng dẫn thiền/thở ngắn, từng bước, giọng điệu nhẹ nhàng, phù hợp để tôi tự đọc và thực hành.`},
+  ]
+},
+{
+  id:"suckhoe", name:"Ăn uống, Gym & Thể dục", color:"var(--lime)", bg:"var(--lime-bg)", num:"17",
+  desc:"Dùng để lên khung thói quen luyện tập/ăn uống lành mạnh — nếu có vấn đề sức khỏe cụ thể, nên tham khảo bác sĩ/chuyên gia dinh dưỡng trước khi áp dụng.",
+  items:[
+    {t:"Lên kế hoạch tập gym theo mục tiêu", use:"Khi cần lịch tập rõ ràng theo mục tiêu cá nhân.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên thể hình (personal trainer)
+Mục tiêu: [tăng cơ / giảm mỡ / tăng sức bền]
+Trình độ hiện tại: [mới bắt đầu / đã tập X tháng]
+Thời gian có thể tập: [X buổi/tuần, X phút/buổi]
+Thiết bị có sẵn: [phòng gym đầy đủ / tại nhà không dụng cụ]
+
+Lên lịch tập theo tuần, nêu rõ nhóm cơ mỗi buổi, số hiệp/số lần, và lưu ý về form tập để tránh chấn thương.`},
+    {t:"Gợi ý thực đơn cân bằng theo mục tiêu", use:"Khi cần ý tưởng bữa ăn lành mạnh, không cần tính toán calo chi tiết.",
+     tmpl:`Vai trò: Bạn là chuyên gia tư vấn ăn uống lành mạnh
+Mục tiêu: [ăn cân bằng hơn / tăng rau xanh / giảm đồ ăn nhanh]
+Sở thích/dị ứng: [món thích/không ăn được]
+Điều kiện nấu ăn: [tự nấu / ăn ngoài nhiều]
+
+Gợi ý thực đơn mẫu trong 1 tuần theo hướng cân bằng, dễ chuẩn bị — chỉ mang tính tham khảo, không thay thế tư vấn của chuyên gia dinh dưỡng.`},
+    {t:"Xây dựng thói quen thể dục bền vững", use:"Khi đã thử nhiều lần nhưng khó duy trì thói quen tập luyện.",
+     tmpl:`Vai trò: Bạn là chuyên gia tâm lý hành vi về thói quen (habit coach)
+Tôi đã thử: [mô tả những lần thử trước và lý do bỏ cuộc]
+Lịch trình hàng ngày của tôi: [mô tả sơ bộ]
+
+Đề xuất cách bắt đầu với thói quen thể dục nhỏ nhất có thể duy trì được, và cách gắn nó vào một thói quen có sẵn (habit stacking).`},
+  ]
+},
+{
+  id:"taichinh", name:"Tài chính cá nhân & Kinh tế", color:"var(--deepteal)", bg:"var(--deepteal-bg)", num:"18",
+  desc:"Dùng để hiểu khái niệm và có thông tin nền — đây không phải tư vấn tài chính chuyên nghiệp, quyết định đầu tư/vay nợ nên tham khảo thêm chuyên gia.",
+  items:[
+    {t:"Lập kế hoạch quản lý chi tiêu cá nhân", use:"Khi cần một hệ thống quản lý tiền rõ ràng.",
+     tmpl:`Vai trò: Bạn là chuyên gia hoạch định tài chính cá nhân
+Thu nhập hàng tháng: [số tiền]
+Chi phí cố định: [liệt kê]
+Mục tiêu tài chính: [tiết kiệm mua nhà / quỹ khẩn cấp / trả nợ...]
+
+Đề xuất cách phân bổ ngân sách theo tỷ lệ hợp lý, và 2-3 điều chỉnh cụ thể tôi có thể làm ngay để đạt mục tiêu nhanh hơn.`},
+    {t:"Giải thích khái niệm tài chính/kinh tế phức tạp", use:"Khi đọc tin tức kinh tế và gặp thuật ngữ không hiểu.",
+     tmpl:`Vai trò: Bạn là chuyên gia kinh tế giải thích cho người không chuyên
+Khái niệm cần hiểu: [ví dụ: lạm phát, lãi suất, trái phiếu, ETF...]
+
+Giải thích bằng ví dụ thực tế gần gũi, và nêu nó ảnh hưởng thế nào đến túi tiền của một người bình thường.`},
+    {t:"Đánh giá khách quan một cơ hội đầu tư", use:"Khi có một cơ hội đầu tư và muốn nhìn nhận rủi ro trước khi quyết định.",
+     tmpl:`Vai trò: Bạn là cố vấn tài chính khách quan, không thiên vị
+Cơ hội đang cân nhắc: [mô tả: cổ phiếu, bất động sản, kinh doanh...]
+Số vốn dự kiến: [số tiền]
+Khẩu vị rủi ro của tôi: [thấp / trung bình / cao]
+
+Phân tích các rủi ro chính, câu hỏi tôi nên tự trả lời trước khi quyết định, và lưu ý đây chỉ là góc nhìn tham khảo, không phải khuyến nghị đầu tư.`},
+  ]
+},
+{
+  id:"nghenghiep", name:"Xu hướng nghề & Thu nhập mới", color:"var(--gold)", bg:"var(--gold-bg)", num:"19",
+  desc:"Dùng để khám phá hướng nghề nghiệp/thu nhập phụ dựa trên xu hướng — nên tự xác minh thêm vì thị trường thay đổi nhanh.",
+  items:[
+    {t:"Khám phá nghề/thu nhập phụ phù hợp kỹ năng sẵn có", use:"Khi muốn tìm hướng kiếm thêm thu nhập dựa trên thế mạnh hiện tại.",
+     tmpl:`Vai trò: Bạn là chuyên gia tư vấn hướng nghiệp
+Kỹ năng/kinh nghiệm hiện có: [liệt kê]
+Thời gian có thể dành: [X giờ/tuần]
+Sở thích: [liệt kê nếu có]
+
+Gợi ý 5 hướng công việc phụ/freelance phù hợp, với mỗi hướng nêu: cần học thêm gì không, mức thu nhập tham khảo, và độ cạnh tranh hiện tại.`},
+    {t:"Đánh giá một ngành nghề mới nổi trước khi theo đuổi", use:"Khi nghe về một nghề 'hot' và muốn đánh giá có nên đầu tư thời gian học không.",
+     tmpl:`Vai trò: Bạn là nhà phân tích xu hướng thị trường lao động
+Ngành/nghề đang cân nhắc: [tên nghề]
+Xuất phát điểm của tôi: [kỹ năng hiện có, thời gian có thể đầu tư]
+
+Phân tích: nhu cầu thị trường hiện tại, rào cản gia nhập, rủi ro nghề này có thể bão hoà nhanh không, và lộ trình học tối thiểu để bắt đầu kiếm được thu nhập đầu tiên.`},
+    {t:"Tìm ngách ít cạnh tranh trong lĩnh vực rộng", use:"Khi muốn làm trong một lĩnh vực nhưng thấy quá đông người làm giống nhau.",
+     tmpl:`Vai trò: Bạn là chuyên gia định vị thị trường ngách (niche positioning)
+Lĩnh vực rộng tôi quan tâm: [ví dụ: content, thiết kế, tư vấn...]
+Điểm khác biệt/kinh nghiệm riêng của tôi: [mô tả]
+
+Gợi ý 3-5 ngách nhỏ trong lĩnh vực này còn ít người khai thác, giải thích vì sao ngách đó có tiềm năng, và ai sẽ là khách hàng/đối tượng phù hợp nhất.`},
+  ]
+},
+{
+  id:"tomo", name:"Tò mò đời thường", color:"var(--sky)", bg:"var(--sky-bg)", num:"20",
+  desc:"Dùng cho những điều 'hiển nhiên' quanh mình nhưng chưa từng hỏi tại sao — biển mặn, trời xanh, vì sao đá lạnh nổi trên nước... Không có câu hỏi nào là ngớ ngẩn cả.",
+  items:[
+    {t:"Giải thích một hiện tượng đời thường", use:"Khi thấy/dùng thứ gì đó hằng ngày nhưng chưa hiểu cơ chế thật sự.",
+     tmpl:`Vai trò: Bạn là người giải thích khoa học gần gũi, không dùng thuật ngữ khó
+Hiện tượng tôi tò mò: [ví dụ: vì sao nước biển mặn còn nước sông ngọt, vì sao lò vi sóng làm nóng thức ăn mà không làm nóng đĩa...]
+
+Giải thích ngắn gọn, dễ hình dung, có thể dùng ví dụ hoặc phép so sánh quen thuộc. Nếu có hiểu lầm phổ biến liên quan đến câu hỏi này, hãy chỉ ra luôn.`},
+    {t:"Kiểm tra lại một điều mình tưởng là đúng", use:"Khi nhớ mang máng một kiến thức từ nhỏ, muốn xác minh lại có đúng không.",
+     tmpl:`Vai trò: Bạn là người kiểm chứng kiến thức phổ thông, thẳng thắn nhưng không phán xét
+Điều tôi vẫn tin là đúng: [mô tả điều bạn nghĩ/nhớ]
+
+Cho tôi biết điều này đúng, sai, hay đúng một phần. Nếu sai, giải thích vì sao nhiều người (kể cả tôi) hay hiểu lầm như vậy.`},
+    {t:"Hỏi 'tại sao' liên hoàn để đào tới gốc rễ", use:"Khi một câu trả lời vẫn chưa thỏa mãn, muốn hiểu tận cùng nguyên nhân.",
+     tmpl:`Vai trò: Bạn là người giải thích kiên nhẫn, sẵn sàng đào sâu từng lớp
+Câu hỏi gốc: [câu hỏi của bạn]
+
+Trả lời câu hỏi này, sau đó tự đặt ra và trả lời tiếp 2 câu "vậy vì sao lại thế" kế tiếp, giống như một đứa trẻ tò mò cứ hỏi mãi — để tôi hiểu tới tận gốc rễ chứ không chỉ ở bề mặt.`},
+    {t:"Giải thích như cho người hoàn toàn mới (ELI5)", use:"Khi chủ đề nghe có vẻ phức tạp nhưng thật ra có thể hiểu đơn giản.",
+     tmpl:`Vai trò: Bạn là người giải thích theo phong cách ELI5 (Explain Like I'm 5)
+Chủ đề: [điều bạn tò mò, dù nghe có vẻ hiển nhiên hoặc quá cơ bản]
+
+Giải thích như thể tôi chưa biết gì về chủ đề này, dùng ví dụ trong đời sống hằng ngày, tránh thuật ngữ chuyên ngành. Cuối cùng tóm tắt lại trong đúng 1 câu.`},
+  ]
+},
+];
+
+const main = document.getElementById('main');
+
+DATA.forEach(cat=>{
+  const section = document.createElement('section');
+  section.className='cat';
+  section.id=cat.id;
+  section.style.setProperty('--cat-color', cat.color);
+  section.style.setProperty('--cat-color-bg', cat.bg);
+
+  section.innerHTML = `
+    <div class="cat-head">
+      <span class="cat-num">${cat.num}</span>
+      <h2>${cat.name}</h2>
+    </div>
+    <p class="cat-desc">${cat.desc}</p>
+    <div class="grid"></div>
+  `;
+  const grid = section.querySelector('.grid');
+
+  cat.items.forEach((item, i)=>{
+    const card = document.createElement('div');
+    card.className='card';
+    card.dataset.search = (cat.name+' '+item.t+' '+item.use+' '+item.tmpl).toLowerCase();
+    const escaped = item.tmpl
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
+    card.innerHTML = `
+      <h3>${item.t}</h3>
+      <p class="use">${item.use}</p>
+      <pre class="tmpl">${escaped}</pre>
+      <button class="copy-btn" type="button">Sao chép</button>
+    `;
+    card.querySelector('.copy-btn').addEventListener('click', function(){
+      navigator.clipboard.writeText(item.tmpl).then(()=>{
+        this.textContent='Đã sao chép ✓';
+        this.classList.add('copied');
+        setTimeout(()=>{this.textContent='Sao chép'; this.classList.remove('copied');},1500);
+      });
+    });
+    grid.appendChild(card);
+  });
+
+  main.appendChild(section);
+});
+
+// tabs
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const f = tab.dataset.filter;
+    document.querySelectorAll('section.cat').forEach(sec=>{
+      sec.style.display = (f==='all' || sec.id===f) ? '' : 'none';
+    });
+    if(f!=='all'){
+      document.getElementById(f).scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+
+// search
+document.getElementById('search').addEventListener('input', (e)=>{
+  const q = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelector('.tab[data-filter="all"]').classList.add('active');
+  document.querySelectorAll('section.cat').forEach(sec=>sec.style.display='');
+  document.querySelectorAll('.card').forEach(card=>{
+    card.style.display = card.dataset.search.includes(q) ? '' : 'none';
+  });
+  document.querySelectorAll('section.cat').forEach(sec=>{
+    const visible = [...sec.querySelectorAll('.card')].some(c=>c.style.display!=='none');
+    sec.style.display = visible ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
