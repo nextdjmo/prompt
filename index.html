@@ -60,6 +60,16 @@
   --graphite-bg:#e2e5ea;
   --sage:#5f8a6b;
   --sage-bg:#e3efe6;
+  --cobalt:#2a4d8f;
+  --cobalt-bg:#dde6f5;
+  --umber:#7a4a2a;
+  --umber-bg:#f1e5d8;
+  --jade:#1f7a5e;
+  --jade-bg:#dcf0e8;
+  --brick:#b5502e;
+  --brick-bg:#f8e3da;
+  --azure:#2e6fb5;
+  --azure-bg:#dbe8f7;
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -281,12 +291,12 @@ footer{
 <body>
 
 <div class="hero">
-  <div class="kicker">Sổ tay thực hành · 89 mẫu prompt</div>
+  <div class="kicker">Sổ tay thực hành · 108 mẫu prompt</div>
   <h1>Dùng AI hiệu quả hơn<br>bắt đầu từ <em>câu hỏi tốt hơn</em>.</h1>
-  <p>Bộ prompt mẫu chia theo 23 nhóm mục đích — công việc, học tập (giải chi tiết từng bước, không chỉ đáp số), lập trình, cảm xúc, sức khỏe, tài chính, những điều tò mò hiển nhiên, và cả những đoạn văn giúp ngày mới nhẹ nhõm hơn. Copy mẫu, điền vào chỗ ngoặc vuông <code>[ ]</code>, chỉnh theo tình huống thực tế của bạn — đây là điểm khởi đầu, không phải công thức cứng. Với chủ đề pháp lý, tài chính, sức khỏe, tình cảm: kết quả AI chỉ mang tính tham khảo, không thay thế chuyên gia.</p>
+  <p>Bộ prompt mẫu chia theo 28 nhóm mục đích — công việc, học tập (giải chi tiết từng bước, không chỉ đáp số), lập trình, cảm xúc, sức khỏe, tài chính, nấu ăn, tự nhìn lại bản thân, những điều tò mò hiển nhiên, sách hay, và cả những đoạn văn giúp ngày mới nhẹ nhõm hơn. Copy mẫu, điền vào chỗ ngoặc vuông <code>[ ]</code>, chỉnh theo tình huống thực tế của bạn — đây là điểm khởi đầu, không phải công thức cứng. Với chủ đề pháp lý, tài chính, sức khỏe, tình cảm: kết quả AI chỉ mang tính tham khảo, không thay thế chuyên gia.</p>
   <div class="hero-meta">
-    <span class="pill">89 prompt</span>
-    <span class="pill">23 nhóm mục đích</span>
+    <span class="pill">108 prompt</span>
+    <span class="pill">28 nhóm mục đích</span>
     <span class="pill">Tiếng Việt</span>
   </div>
 </div>
@@ -318,6 +328,11 @@ footer{
     <button class="tab" data-filter="toanvan">Toán &amp; Văn theo lớp</button>
     <button class="tab" data-filter="codehtml">Code trang HTML</button>
     <button class="tab" data-filter="camhung">Cảm hứng mỗi ngày</button>
+    <button class="tab" data-filter="sachtomtat">Tóm tắt sách</button>
+    <button class="tab" data-filter="chiemtinh">Tarot, Chiêm tinh &amp; Tự nghiệm</button>
+    <button class="tab" data-filter="bachkhoa">Bách khoa tri thức</button>
+    <button class="tab" data-filter="nauan">Học nấu ăn</button>
+    <button class="tab" data-filter="tuhoanthien">Tự nhìn lại &amp; Cải thiện bản thân</button>
   </div>
 </div>
 
@@ -1025,6 +1040,177 @@ Viết một câu chuyện ngụ ngôn ngắn (dưới 300 từ) truyền tải 
 Hôm nay tôi muốn đọc về chủ đề: [chọn: lòng biết ơn / sự kiên trì / chấp nhận thay đổi / tự do nội tâm... hoặc để trống để bạn tự chọn một góc nhìn mới]
 
 Viết một đoạn ngắn (150-250 từ) gồm: một góc nhìn mới về chủ đề, một câu hỏi để tôi tự suy ngẫm, và một hành động nhỏ tôi có thể thử áp dụng ngay hôm nay.`},
+  ]
+},
+{
+  id:"sachtomtat", name:"Tóm tắt sách", color:"var(--cobalt)", bg:"var(--cobalt-bg)", num:"24",
+  desc:"Dùng khi muốn nắm nhanh nội dung cốt lõi một cuốn sách, ôn lại sách đã đọc, hoặc chọn sách phù hợp trước khi mua/đọc trọn.",
+  items:[
+    {t:"Tóm tắt sách theo cấu trúc chương", use:"Khi muốn nắm toàn bộ mạch nội dung một cuốn sách cụ thể trước hoặc thay vì đọc trọn.",
+     tmpl:`Vai trò: Bạn là người review sách am hiểu, trình bày trung thực nội dung
+Tên sách: [tên sách]
+Tác giả: [tên tác giả, nếu biết]
+
+Tóm tắt theo cấu trúc:
+1. Cuốn sách viết về điều gì (2-3 câu)
+2. Các luận điểm/phần chính (theo chương hoặc theo chủ đề lớn)
+3. 3 bài học hoặc ý tưởng đáng nhớ nhất
+4. Cuốn sách này hợp với ai, không hợp với ai
+
+Nếu không chắc chắn về chi tiết cụ thể trong sách, hãy nói rõ thay vì bịa nội dung.`},
+    {t:"So sánh hai cuốn sách cùng chủ đề", use:"Khi phân vân nên đọc cuốn nào giữa hai sách viết về cùng một đề tài.",
+     tmpl:`Vai trò: Bạn là người review sách khách quan
+So sánh hai cuốn: [Sách A] và [Sách B] — cùng viết về chủ đề [chủ đề chung]
+
+So sánh theo: cách tiếp cận vấn đề, độ dễ đọc, đối tượng phù hợp nhất, và điểm khác biệt lớn nhất giữa hai cuốn. Không cần chọn cuốn nào "hay hơn" — chỉ giúp tôi biết cuốn nào hợp với nhu cầu của mình hơn.`},
+    {t:"Rút ra bài học áp dụng được ngay", use:"Khi đã đọc/nghe qua một cuốn sách và muốn chắt lọc phần thực hành được.",
+     tmpl:`Vai trò: Bạn là người biến kiến thức sách thành hành động cụ thể
+Tên sách: [tên sách]
+Bối cảnh của tôi: [đang gặp vấn đề gì, muốn áp dụng vào việc gì]
+
+Từ nội dung chính của cuốn sách này, gợi ý 3-5 điều cụ thể tôi có thể áp dụng ngay vào bối cảnh của mình, không chỉ nhắc lại lý thuyết chung chung.`},
+    {t:"Ôn lại sách đã đọc lâu bằng câu hỏi gợi nhớ", use:"Khi đã đọc một cuốn sách từ lâu và muốn ôn lại ý chính.",
+     tmpl:`Vai trò: Bạn là bạn đọc sách cùng, giúp tôi ôn lại trí nhớ
+Tên sách: [tên sách]
+Điều tôi còn nhớ mang máng: [mô tả những gì bạn nhớ được]
+
+Dựa vào nội dung chính của sách, đặt cho tôi 5 câu hỏi gợi nhớ theo thứ tự từ dễ đến khó, giúp tôi tự ôn lại thay vì đọc lại tóm tắt có sẵn.`},
+    {t:"Gợi ý sách theo nhu cầu cụ thể", use:"Khi chưa biết đọc sách gì, chỉ có một nhu cầu/mối quan tâm mơ hồ.",
+     tmpl:`Vai trò: Bạn là người tư vấn sách am hiểu nhiều thể loại
+Tôi đang quan tâm đến: [chủ đề, ví dụ: quản lý thời gian, lịch sử Việt Nam, tâm lý học hành vi...]
+Tôi thích đọc theo kiểu: [nhiều câu chuyện thực tế / có hệ thống lý thuyết chặt chẽ / ngắn gọn dễ đọc]
+
+Gợi ý 3-5 cuốn sách phù hợp, mỗi cuốn nêu ngắn gọn: viết về gì, vì sao hợp với tiêu chí tôi đưa ra, và mức độ dễ/khó đọc.`},
+  ]
+},
+{
+  id:"chiemtinh", name:"Tarot, Chiêm tinh & Tự nghiệm", color:"var(--umber)", bg:"var(--umber-bg)", num:"25",
+  desc:"Chiêm tinh, thần số học, tarot là công cụ phản tư và giải trí mang tính văn hoá — chưa có bằng chứng khoa học cho thấy chúng dự đoán được tương lai hay tính cách một cách đáng tin cậy. Dùng các mẫu dưới đây để tự soi chiếu suy nghĩ, không phải để thay thế quyết định thực tế.",
+  items:[
+    {t:"Diễn giải một lá bài/biểu tượng như một bài tập phản tư", use:"Khi muốn dùng một lá tarot hoặc biểu tượng như điểm khởi đầu để tự suy ngẫm, không phải để tiên đoán.",
+     tmpl:`Vai trò: Bạn là người dẫn dắt phản tư, dùng biểu tượng văn hoá làm gợi ý suy nghĩ, không đưa ra tiên đoán
+Biểu tượng/lá bài: [tên lá bài hoặc biểu tượng]
+Tình huống tôi đang cân nhắc: [mô tả ngắn]
+
+Giải thích ý nghĩa biểu tượng này trong truyền thống tarot/văn hoá liên quan, sau đó đặt cho tôi 2-3 câu hỏi phản tư để tôi tự liên hệ với tình huống của mình. Không đưa ra khẳng định về tương lai.`},
+    {t:"Tìm hiểu nguồn gốc & cơ sở khoa học của một hệ thống chiêm tinh/bói toán", use:"Khi tò mò về lịch sử, ý nghĩa văn hoá của một hệ thống (cung hoàng đạo, thần số học, Kinh Dịch...) và muốn biết nó có được khoa học kiểm chứng không.",
+     tmpl:`Vai trò: Bạn là nhà nghiên cứu văn hoá/lịch sử khoa học, trình bày khách quan
+Hệ thống tôi muốn tìm hiểu: [cung hoàng đạo / thần số học / Kinh Dịch / chỉ tay...]
+
+Trình bày: nguồn gốc lịch sử và vai trò văn hoá của hệ thống này, những nghiên cứu khoa học đã thử kiểm chứng nó nói gì (nếu có), và vì sao nhiều người vẫn thấy nó hữu ích dù không có cơ sở dự đoán khoa học (ví dụ: hiệu ứng Barnum, giá trị như công cụ tự phản tư).`},
+    {t:"Viết đoạn văn truyền cảm hứng theo phong cách chiêm tinh (giải trí)", use:"Khi thích phong cách văn viết kiểu tử vi/chiêm tinh cho vui, không cần tin vào độ chính xác.",
+     tmpl:`Vai trò: Bạn là người viết nội dung giải trí phong cách chiêm tinh, ghi rõ đây là nội dung mang tính giải trí
+Cung/mệnh: [cung hoàng đạo hoặc yếu tố bạn thích]
+Tâm trạng/tình huống hiện tại: [mô tả ngắn]
+
+Viết một đoạn ngắn (100-150 từ) theo phong cách chiêm tinh vui vẻ, mang tính giải trí và truyền cảm hứng nhẹ nhàng — không đưa ra dự đoán cụ thể về sự kiện tương lai (tiền bạc, sức khoẻ, tình yêu) như thể chắc chắn sẽ xảy ra.`},
+  ]
+},
+{
+  id:"bachkhoa", name:"Bách khoa tri thức mỗi ngày", color:"var(--jade)", bg:"var(--jade-bg)", num:"26",
+  desc:"Dùng khi rảnh rỗi muốn đọc một điều thú vị bất kỳ — lịch sử, khoa học, văn hoá, thiên nhiên — không cần mục đích cụ thể, chỉ để mở mang.",
+  items:[
+    {t:"Một sự kiện/phát minh thú vị ngẫu nhiên", use:"Khi muốn đọc một mẩu kiến thức thú vị mà không cần chọn chủ đề cụ thể.",
+     tmpl:`Vai trò: Bạn là người kể chuyện tri thức, giọng văn hấp dẫn như đang kể chuyện chứ không liệt kê khô khan
+Lĩnh vực gợi ý (có thể để trống để bạn tự chọn ngẫu nhiên): [lịch sử / khoa học / thiên nhiên / phát minh / văn hoá thế giới]
+
+Kể cho tôi một sự kiện hoặc phát minh thú vị, ít người biết, trong khoảng 150-200 từ. Nêu rõ vì sao điều này đáng ngạc nhiên hoặc thay đổi cách nhìn thông thường.`},
+    {t:"Giải mã một hiểu lầm phổ biến trong lịch sử/khoa học", use:"Khi muốn biết những điều 'ai cũng tưởng đúng' nhưng thực ra sai.",
+     tmpl:`Vai trò: Bạn là người kiểm chứng kiến thức phổ thông, thẳng thắn nhưng thú vị
+Chủ đề: [lịch sử / khoa học / cơ thể người / vũ trụ...] (để trống nếu muốn AI tự chọn một hiểu lầm phổ biến)
+
+Chọn một hiểu lầm phổ biến mà nhiều người tin là đúng, giải thích sự thật thực sự là gì, và vì sao hiểu lầm đó lại lan rộng đến vậy.`},
+    {t:"So sánh hai điều tưởng không liên quan", use:"Khi muốn một góc nhìn bất ngờ, kết nối hai chủ đề tưởng chừng chẳng liên quan gì đến nhau.",
+     tmpl:`Vai trò: Bạn là người kể chuyện tri thức thích tìm mối liên hệ bất ngờ
+Chủ đề 1: [ví dụ: cách loài kiến xây tổ]
+Chủ đề 2: [ví dụ: quy hoạch giao thông đô thị]
+
+Tìm và giải thích một điểm liên hệ thú vị, bất ngờ giữa hai chủ đề này — theo cách dễ hiểu, không gượng ép.`},
+    {t:"Bộ câu hỏi trivia ngắn theo chủ đề", use:"Khi muốn tự đố vui hoặc chơi cùng bạn bè/gia đình lúc rảnh.",
+     tmpl:`Vai trò: Bạn là người ra câu hỏi trivia thú vị, có kiểm chứng
+Chủ đề: [lịch sử thế giới / động vật / vũ trụ / ẩm thực các nước...]
+Số lượng câu hỏi: [5-10]
+
+Ra bộ câu hỏi trắc nghiệm mức độ từ dễ đến khó, kèm đáp án và một câu giải thích ngắn thú vị ở cuối mỗi câu (không để đáp án ngay cạnh câu hỏi, để riêng phần đáp án ở cuối).`},
+  ]
+},
+{
+  id:"nauan", name:"Học nấu ăn", color:"var(--brick)", bg:"var(--brick-bg)", num:"27",
+  desc:"Dùng khi muốn học nấu một món cụ thể, biến tấu theo nguyên liệu có sẵn, hoặc cứu một món đang nấu hỏng.",
+  items:[
+    {t:"Học nấu một món từ đầu, đúng trình độ", use:"Khi muốn nấu một món cụ thể lần đầu và cần hướng dẫn sát tay nghề thật của mình.",
+     tmpl:`Vai trò: Bạn là đầu bếp hướng dẫn nấu ăn tận tâm
+Món muốn nấu: [tên món]
+Trình độ nấu ăn: [mới tập nấu / nấu được cơ bản / khá thành thạo]
+Dụng cụ có sẵn: [bếp gas / bếp từ / lò nướng / nồi chiên không dầu...]
+Số người ăn: [số lượng]
+
+Đưa ra: danh sách nguyên liệu kèm định lượng, các bước thực hiện theo thứ tự (giải thích tại sao làm bước đó, không chỉ liệt kê thao tác), và 1-2 lỗi người mới hay mắc phải khi làm món này.`},
+    {t:"Nấu theo nguyên liệu đang có sẵn", use:"Khi tủ lạnh có sẵn vài nguyên liệu, chưa biết nấu món gì.",
+     tmpl:`Vai trò: Bạn là đầu bếp linh hoạt, giỏi tận dụng nguyên liệu sẵn có
+Nguyên liệu đang có: [liệt kê những gì có trong tủ lạnh/bếp]
+Khẩu vị: [thích cay / thanh đạm / đậm đà...]
+Thời gian nấu tối đa: [X phút]
+
+Gợi ý 2-3 món có thể nấu ngay với nguyên liệu này, không cần mua thêm gì (hoặc chỉ cần thêm 1-2 thứ dễ tìm). Với món khả thi nhất, hướng dẫn cách làm chi tiết.`},
+    {t:"Cứu món ăn đang nấu bị hỏng", use:"Khi món ăn đang nấu bị lỗi (quá mặn, quá cay, bị khê, không đông, tách nước...) và cần xử lý ngay.",
+     tmpl:`Vai trò: Bạn là đầu bếp giàu kinh nghiệm xử lý sự cố khi nấu ăn
+Món đang nấu: [tên món]
+Vấn đề gặp phải: [mô tả cụ thể: quá mặn, bị khê đáy nồi, nước sốt bị tách, bột không nở...]
+Giai đoạn hiện tại: [mới bắt đầu / đang nấu dở / gần xong]
+
+Cho tôi cách xử lý ngay để cứu món, và giải thích ngắn gọn nguyên nhân để lần sau tránh lặp lại.`},
+    {t:"Lên thực đơn tuần dễ nấu, ít lặp nguyên liệu", use:"Khi cần kế hoạch nấu ăn cả tuần mà không tốn quá nhiều thời gian nghĩ mỗi ngày.",
+     tmpl:`Vai trò: Bạn là chuyên gia lên thực đơn gia đình
+Số người ăn: [số lượng]
+Thời gian nấu mỗi bữa: [tối đa X phút]
+Khẩu vị/hạn chế: [ăn chay / không ăn hải sản / thích món Việt...]
+Ngân sách: [mức chi tiêu mong muốn nếu có]
+
+Lên thực đơn 7 ngày (bữa trưa/tối), tận dụng nguyên liệu chéo giữa các ngày để đỡ phải mua lẻ tẻ nhiều loại, kèm danh sách đi chợ tổng hợp theo tuần.`},
+    {t:"Học một kỹ thuật nấu ăn cơ bản", use:"Khi muốn hiểu bản chất một kỹ thuật (chứ không chỉ một công thức) để áp dụng cho nhiều món.",
+     tmpl:`Vai trò: Bạn là đầu bếp giảng dạy kỹ thuật nấu ăn nền tảng
+Kỹ thuật muốn học: [ví dụ: áp chảo đúng cách, làm nước dùng trong, thắng đường màu, nêm nếm cân bằng vị...]
+Trình độ hiện tại: [mới bắt đầu / đã biết sơ]
+
+Giải thích nguyên lý của kỹ thuật này (vì sao làm vậy sẽ ra kết quả đó), các bước thực hành cụ thể, dấu hiệu nhận biết làm đúng/sai, và 2-3 món cơ bản có thể luyện tập kỹ thuật này.`},
+  ]
+},
+{
+  id:"tuhoanthien", name:"Tự nhìn lại & Cải thiện bản thân", color:"var(--azure)", bg:"var(--azure-bg)", num:"28",
+  desc:"Dùng để tự soi chiếu qua các tình huống cụ thể bạn mô tả — AI chỉ phản ánh dựa trên thông tin bạn cung cấp, không thể thay thế sự tự nhận thức hoặc góc nhìn của người thân/chuyên gia thật sự hiểu bạn.",
+  items:[
+    {t:"Nhận diện điểm cần cải thiện qua tình huống lặp lại", use:"Khi nhận ra một kiểu tình huống cứ lặp đi lặp lại và muốn hiểu phần mình đóng góp vào đó.",
+     tmpl:`Vai trò: Bạn là người đồng hành phản tư, khách quan và không phán xét
+Tình huống hay lặp lại: [mô tả 2-3 lần cụ thể tình huống này đã xảy ra]
+Cách tôi thường phản ứng: [mô tả]
+Kết quả thường xảy ra sau đó: [mô tả]
+
+Dựa trên các tình huống tôi mô tả (không suy diễn thêm ngoài những gì tôi kể), giúp tôi nhận ra: có khuôn mẫu phản ứng nào lặp lại không, và 2-3 câu hỏi tôi nên tự hỏi để hiểu rõ hơn phần mình có thể điều chỉnh.`},
+    {t:"Phân tích một thất bại/sai lầm để rút kinh nghiệm", use:"Khi vừa trải qua một việc không như ý và muốn rút bài học thay vì chỉ tự trách.",
+     tmpl:`Vai trò: Bạn là cố vấn giúp rút kinh nghiệm mang tính xây dựng, không khơi lại cảm giác tội lỗi
+Việc không như ý vừa xảy ra: [mô tả sự việc]
+Những gì tôi đã làm/quyết định lúc đó: [mô tả]
+Kết quả thực tế: [mô tả]
+
+Phân tích: quyết định nào ở thời điểm đó là hợp lý với thông tin tôi có lúc ấy, điểm nào nhìn lại có thể làm khác đi, và 1-2 điều cụ thể tôi có thể áp dụng cho tình huống tương tự sau này.`},
+    {t:"Nhờ AI đóng vai người ngoài cuộc để chỉ ra điểm mù", use:"Khi muốn một góc nhìn thẳng thắn về điều mình có thể đang không tự nhận ra.",
+     tmpl:`Vai trò: Bạn là người quan sát khách quan, đóng vai một người bạn thân thẳng thắn, được phép nói thật kể cả khi khó nghe
+Tôi sẽ mô tả một tình huống/mối quan hệ/cách tôi thường xử sự: [mô tả chi tiết, càng cụ thể càng tốt]
+
+Dựa hoàn toàn trên những gì tôi vừa kể (không suy đoán ngoài đó), hãy chỉ ra: điều gì trong cách tôi kể có thể đang cho thấy một góc nhìn một chiều, và một câu hỏi phản biện thẳng thắn tôi nên tự đối diện.`},
+    {t:"Xác định điều nên tránh dựa trên hậu quả đã từng gặp", use:"Khi muốn liệt kê rõ ràng những điều nên tránh lặp lại, dựa trên chính trải nghiệm của mình.",
+     tmpl:`Vai trò: Bạn là người giúp tôi hệ thống hoá bài học thành nguyên tắc hành động
+Những lần tôi gặp hậu quả không mong muốn: [liệt kê 2-4 tình huống cụ thể và hậu quả kèm theo]
+
+Từ các tình huống này, tổng hợp thành một danh sách ngắn "những điều nên tránh" viết dưới dạng nguyên tắc hành động cụ thể (không phải lời khuyên chung chung), để tôi có thể tự nhắc mình trước khi rơi vào tình huống tương tự.`},
+    {t:"Lập kế hoạch cải thiện một điểm yếu cụ thể", use:"Khi đã biết rõ một điểm cần cải thiện, cần một lộ trình thực tế để thay đổi dần.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên phát triển cá nhân (personal development coach)
+Điểm tôi muốn cải thiện: [mô tả cụ thể, ví dụ: hay trì hoãn, ngại từ chối, dễ nóng giận khi tranh luận...]
+Biểu hiện cụ thể trong đời sống: [mô tả tình huống hay xảy ra]
+Điều tôi đã thử trước đây (nếu có): [mô tả]
+
+Đề xuất lộ trình cải thiện theo từng bước nhỏ, dễ duy trì, kèm một cách để tôi tự theo dõi tiến độ theo tuần — tránh mục tiêu quá lớn khiến dễ bỏ cuộc.`},
   ]
 },
 ];
