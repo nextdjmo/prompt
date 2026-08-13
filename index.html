@@ -54,6 +54,12 @@
   --gold-bg:#f5ecd9;
   --sky:#2a7ab8;
   --sky-bg:#dcecf7;
+  --crimson:#a8323f;
+  --crimson-bg:#f7dee1;
+  --graphite:#3a3f4a;
+  --graphite-bg:#e2e5ea;
+  --sage:#5f8a6b;
+  --sage-bg:#e3efe6;
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -275,12 +281,12 @@ footer{
 <body>
 
 <div class="hero">
-  <div class="kicker">Sổ tay thực hành · 72 mẫu prompt</div>
+  <div class="kicker">Sổ tay thực hành · 89 mẫu prompt</div>
   <h1>Dùng AI hiệu quả hơn<br>bắt đầu từ <em>câu hỏi tốt hơn</em>.</h1>
-  <p>Một bộ prompt mẫu chia theo 20 nhóm mục đích thường gặp — từ công việc, học tập, cảm xúc, sức khỏe, tài chính đến những điều tò mò hiển nhiên quanh mình. Copy mẫu, điền vào chỗ ngoặc vuông <code>[ ]</code>, chỉnh theo tình huống thực tế của bạn — coi đây là điểm khởi đầu, không phải công thức cứng. Với các chủ đề pháp lý, tài chính, sức khỏe, tình cảm: kết quả AI chỉ mang tính tham khảo, không thay thế chuyên gia.</p>
+  <p>Bộ prompt mẫu chia theo 23 nhóm mục đích — công việc, học tập (giải chi tiết từng bước, không chỉ đáp số), lập trình, cảm xúc, sức khỏe, tài chính, những điều tò mò hiển nhiên, và cả những đoạn văn giúp ngày mới nhẹ nhõm hơn. Copy mẫu, điền vào chỗ ngoặc vuông <code>[ ]</code>, chỉnh theo tình huống thực tế của bạn — đây là điểm khởi đầu, không phải công thức cứng. Với chủ đề pháp lý, tài chính, sức khỏe, tình cảm: kết quả AI chỉ mang tính tham khảo, không thay thế chuyên gia.</p>
   <div class="hero-meta">
-    <span class="pill">72 prompt</span>
-    <span class="pill">20 nhóm mục đích</span>
+    <span class="pill">89 prompt</span>
+    <span class="pill">23 nhóm mục đích</span>
     <span class="pill">Tiếng Việt</span>
   </div>
 </div>
@@ -309,6 +315,9 @@ footer{
     <button class="tab" data-filter="taichinh">Tài chính</button>
     <button class="tab" data-filter="nghenghiep">Nghề &amp; Thu nhập</button>
     <button class="tab" data-filter="tomo">Tò mò đời thường</button>
+    <button class="tab" data-filter="toanvan">Toán &amp; Văn theo lớp</button>
+    <button class="tab" data-filter="codehtml">Code trang HTML</button>
+    <button class="tab" data-filter="camhung">Cảm hứng mỗi ngày</button>
   </div>
 </div>
 
@@ -921,6 +930,101 @@ Trả lời câu hỏi này, sau đó tự đặt ra và trả lời tiếp 2 c�
 Chủ đề: [điều bạn tò mò, dù nghe có vẻ hiển nhiên hoặc quá cơ bản]
 
 Giải thích như thể tôi chưa biết gì về chủ đề này, dùng ví dụ trong đời sống hằng ngày, tránh thuật ngữ chuyên ngành. Cuối cùng tóm tắt lại trong đúng 1 câu.`},
+  ]
+},
+{
+  id:"toanvan", name:"Toán & Văn theo cấp lớp", color:"var(--crimson)", bg:"var(--crimson-bg)", num:"21",
+  desc:"Dùng để học/giải bài có lời giải chi tiết từng bước, đúng kiến thức trong chương trình — không chỉ ra đáp án cuối cùng.",
+  items:[
+    {t:"Giải bài Toán từng bước theo đúng cấp lớp", use:"Khi cần hiểu cách làm, không chỉ cần đáp số.",
+     tmpl:`Vai trò: Bạn là giáo viên Toán lớp [số lớp]
+Đề bài: [dán đề bài]
+
+Yêu cầu: giải chi tiết từng bước, chỉ dùng kiến thức đã học tới lớp [số lớp] (không dùng công thức nâng cao chưa học), giải thích vì sao làm bước đó chứ không chỉ đưa ra phép tính. Sau khi giải xong, tóm tắt lại phương pháp chung để áp dụng cho các bài tương tự.`},
+    {t:"Phân tích tác phẩm văn học theo chương trình học", use:"Khi cần hướng dẫn triển khai bài văn nghị luận, không phải bài mẫu để chép.",
+     tmpl:`Vai trò: Bạn là giáo viên Ngữ văn lớp [số lớp]
+Tác phẩm/đoạn trích: [tên tác phẩm hoặc dán đoạn trích]
+Yêu cầu phân tích: [nội dung, nghệ thuật, nhân vật...]
+
+Hướng dẫn phân tích theo cấu trúc: mở bài - triển khai từng luận điểm kèm dẫn chứng - kết bài, đúng cách làm bài nghị luận văn học ở cấp [số lớp]. Không viết sẵn bài hoàn chỉnh để chép — hướng dẫn tôi tự triển khai từng luận điểm.`},
+    {t:"Chữa bài đã làm, chỉ ra sai ở bước nào", use:"Khi đã tự làm bài và muốn biết mình sai ở đâu, không phải giải lại từ đầu.",
+     tmpl:`Vai trò: Bạn là giáo viên chấm bài tận tâm
+Đề bài: [dán đề]
+Bài làm của tôi: [dán bài làm/cách giải của bạn]
+
+Chỉ ra: bước nào đúng, bước nào sai và vì sao sai. Không giải lại toàn bộ hộ tôi — chỉ gợi ý hướng sửa để tôi tự làm lại đúng bước đó.`},
+    {t:"Tạo đề luyện tập theo đúng dạng bài", use:"Khi cần luyện thêm một dạng bài cụ thể trước khi kiểm tra.",
+     tmpl:`Vai trò: Bạn là giáo viên ra đề luyện tập
+Dạng bài tôi muốn luyện: [ví dụ: giải phương trình bậc hai, viết đoạn văn nghị luận xã hội 200 chữ...]
+Cấp lớp: [số lớp]
+Mức độ: [dễ / trung bình / khó]
+
+Ra cho tôi 3 đề luyện tập cùng dạng, kèm đáp án/gợi ý cách làm riêng ở cuối để tôi tự đối chiếu sau khi làm xong (không để đáp án lộ ngay phía trên đề).`},
+  ]
+},
+{
+  id:"codehtml", name:"Code trang HTML cho nhiệm vụ cụ thể", color:"var(--graphite)", bg:"var(--graphite-bg)", num:"22",
+  desc:"Dùng khi cần một công cụ/mini-app HTML gọn nhẹ để giải quyết một nhiệm vụ cụ thể, không cần cả một dự án lớn.",
+  items:[
+    {t:"Tạo công cụ/mini-app HTML một trang", use:"Khi cần một công cụ nhỏ gọn cho một tác vụ cụ thể (tính toán, đếm giờ, theo dõi...).",
+     tmpl:`Vai trò: Bạn là lập trình viên frontend
+Công cụ tôi cần: [mô tả chức năng, ví dụ: máy tính chia tiền nhóm, đồng hồ đếm ngược, bảng theo dõi thói quen...]
+Input người dùng nhập: [liệt kê]
+Kết quả cần hiển thị: [mô tả]
+
+Viết thành 1 file HTML độc lập (HTML+CSS+JS trong cùng 1 file), giao diện gọn gàng dễ dùng, không cần backend.`},
+    {t:"Tạo form nhập liệu có danh sách/tổng hợp", use:"Khi cần nhập dữ liệu nhiều lần rồi xem lại/tính tổng ngay trong phiên làm việc.",
+     tmpl:`Vai trò: Bạn là lập trình viên frontend
+Form tôi cần: [mô tả các trường dữ liệu]
+Sau khi nhập, tôi muốn: [xem lại danh sách đã nhập / xuất ra file / tính tổng...]
+
+Viết file HTML hoàn chỉnh, dữ liệu lưu tạm trong bộ nhớ khi dùng (không cần đăng nhập hay lưu vĩnh viễn), có nút xoá/sửa nếu cần.`},
+    {t:"Debug lỗi trang HTML có sẵn", use:"Khi trang đã viết nhưng có phần không hoạt động đúng.",
+     tmpl:`Vai trò: Bạn là lập trình viên frontend chuyên gỡ lỗi
+Code hiện tại: [dán code HTML/CSS/JS]
+Lỗi gặp phải: [mô tả hiện tượng, ví dụ: nút bấm không hoạt động, giao diện vỡ trên điện thoại...]
+Kết quả mong muốn: [mô tả]
+
+Chỉ ra nguyên nhân lỗi cụ thể nằm ở đâu trong code, và đưa bản sửa hoàn chỉnh.`},
+    {t:"Cải thiện giao diện một trang HTML đã có", use:"Khi trang chạy đúng chức năng nhưng giao diện chưa đẹp/chưa gọn.",
+     tmpl:`Vai trò: Bạn là chuyên gia thiết kế giao diện (UI)
+Code hiện tại: [dán code]
+Vấn đề về giao diện: [xấu, rối, không rõ bố cục, không responsive...]
+Phong cách mong muốn: [tối giản / hiện đại / màu sắc trẻ trung...]
+
+Giữ nguyên chức năng, chỉ chỉnh CSS (và cấu trúc HTML nếu cần) để giao diện đẹp và dễ dùng hơn, đặc biệt trên điện thoại.`},
+  ]
+},
+{
+  id:"camhung", name:"Cảm hứng & Suy ngẫm mỗi ngày", color:"var(--sage)", bg:"var(--sage-bg)", num:"23",
+  desc:"Dùng để đọc mỗi ngày một đoạn ngắn giúp tâm trạng nhẹ nhõm hơn, hoặc rèn tư duy tích cực dần theo thời gian — không sáo rỗng, không giáo điều.",
+  items:[
+    {t:"Đoạn văn ngắn truyền cảm hứng theo tâm trạng", use:"Khi cần một chút động lực hoặc sự đồng cảm phù hợp với tâm trạng hiện tại.",
+     tmpl:`Vai trò: Bạn là người viết văn truyền cảm hứng, giọng văn ấm áp, chân thành, không sáo rỗng
+Tâm trạng của tôi hôm nay: [mô tả, ví dụ: mệt mỏi, chán nản, bình thường nhưng muốn thêm động lực]
+Điều tôi đang trải qua: [mô tả ngắn nếu có]
+
+Viết một đoạn văn ngắn (150-200 từ) phù hợp với tâm trạng này, không đưa lời khuyên sáo rỗng, kết thúc bằng một câu để tôi mang theo suy ngẫm trong ngày.`},
+    {t:"Rút bài học cuộc sống từ một trải nghiệm", use:"Khi vừa trải qua một chuyện gì đó và muốn nhìn nó theo góc nhìn sâu sắc hơn.",
+     tmpl:`Vai trò: Bạn là người viết chiêm nghiệm sâu sắc về cuộc sống
+Sự việc/trải nghiệm: [mô tả điều vừa xảy ra hoặc một kỷ niệm]
+
+Viết một đoạn suy ngẫm ngắn rút ra bài học từ trải nghiệm này, giọng văn nhẹ nhàng, không giáo điều, giúp tôi nhìn sự việc theo góc độ tích cực hơn mà không phủ nhận cảm xúc thật của tôi.`},
+    {t:"Đoạn văn chữa lành sau một ngày dài", use:"Khi chỉ cần đọc xong thấy nhẹ nhõm hơn, không cần giải quyết vấn đề gì.",
+     tmpl:`Vai trò: Bạn là người viết văn chữa lành, giọng văn chậm rãi, an ủi
+Ngày hôm nay của tôi: [mô tả ngắn, ví dụ: căng thẳng, nhiều việc, mệt mỏi]
+
+Viết một đoạn văn ngắn giúp tôi cảm thấy được xoa dịu, không cần đưa ra giải pháp, chỉ cần đọc xong thấy dễ chịu hơn.`},
+    {t:"Câu chuyện ngụ ngôn mang bài học tư duy", use:"Khi muốn tiếp nhận một bài học theo cách nhẹ nhàng, tự cảm nhận thay vì bị dạy bảo trực tiếp.",
+     tmpl:`Vai trò: Bạn là người kể chuyện ngụ ngôn có chiều sâu
+Bài học/tư duy tôi muốn được gợi mở: [ví dụ: kiên nhẫn, buông bỏ, chấp nhận thất bại...]
+
+Viết một câu chuyện ngụ ngôn ngắn (dưới 300 từ) truyền tải bài học này một cách tự nhiên, không nói thẳng bài học ra ở cuối — để tôi tự cảm nhận.`},
+    {t:"Bài viết rèn tư duy theo chủ đề mỗi ngày", use:"Dùng lặp lại hằng ngày như một thói quen đọc nhỏ để tư duy phát triển dần theo thời gian.",
+     tmpl:`Vai trò: Bạn là người biên soạn nội dung phát triển tư duy hằng ngày
+Hôm nay tôi muốn đọc về chủ đề: [chọn: lòng biết ơn / sự kiên trì / chấp nhận thay đổi / tự do nội tâm... hoặc để trống để bạn tự chọn một góc nhìn mới]
+
+Viết một đoạn ngắn (150-250 từ) gồm: một góc nhìn mới về chủ đề, một câu hỏi để tôi tự suy ngẫm, và một hành động nhỏ tôi có thể thử áp dụng ngay hôm nay.`},
   ]
 },
 ];
