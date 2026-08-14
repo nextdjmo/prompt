@@ -83,6 +83,7 @@
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+html,body{overflow-x:hidden;}
 body{
   margin:0;
   background:
@@ -290,11 +291,39 @@ footer{
   border-top:1px solid var(--border);
 }
 
-@media (max-width:600px){
-  .hero{padding:52px 18px 28px;}
-  main{padding:24px 18px 80px;}
-  .nav{padding:12px 18px;}
-  .nav-search{width:140px;}
+@media (max-width:700px){
+  .hero{padding:44px 16px 24px;}
+  .hero h1{font-size:clamp(26px,7vw,36px);}
+  .hero p{font-size:15px;}
+  .hero-meta{gap:8px;}
+  .pill{font-size:11px; padding:5px 10px;}
+
+  .nav-wrap{padding:0;}
+  .nav{
+    padding:10px 16px;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .nav::-webkit-scrollbar{display:none;}
+  .nav-search{width:120px; flex:0 0 auto;}
+  .tab{flex:0 0 auto;}
+
+  main{padding:20px 16px 80px;}
+  section.cat{margin-bottom:40px;}
+  .cat-head{flex-wrap:wrap; gap:8px;}
+  .cat-head h2{font-size:19px;}
+  .cat-desc{font-size:13.5px;}
+
+  .grid{grid-template-columns:1fr; gap:12px;}
+  .card{padding:14px 14px 12px;}
+  .tmpl{font-size:12px; padding:10px 11px;}
+}
+
+@media (max-width:380px){
+  .hero h1{font-size:24px;}
+  .kicker{font-size:11px;}
 }
 </style>
 </head>
