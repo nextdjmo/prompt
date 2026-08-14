@@ -70,6 +70,16 @@
   --brick-bg:#f8e3da;
   --azure:#2e6fb5;
   --azure-bg:#dbe8f7;
+  --emerald:#1f8a5f;
+  --emerald-bg:#dcf2e6;
+  --bronze:#9c6b2f;
+  --bronze-bg:#f3e8d6;
+  --lavender:#6b5fb0;
+  --lavender-bg:#eae6fa;
+  --ocean:#1f6f8a;
+  --ocean-bg:#dcedf2;
+  --wine:#8a2f52;
+  --wine-bg:#f2dce6;
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -293,10 +303,10 @@ footer{
 <div class="hero">
   <div class="kicker">Sổ tay thực hành · 108 mẫu prompt</div>
   <h1>Dùng AI hiệu quả hơn<br>bắt đầu từ <em>câu hỏi tốt hơn</em>.</h1>
-  <p>Bộ prompt mẫu chia theo 28 nhóm mục đích — công việc, học tập (giải chi tiết từng bước, không chỉ đáp số), lập trình, cảm xúc, sức khỏe, tài chính, nấu ăn, tự nhìn lại bản thân, những điều tò mò hiển nhiên, sách hay, và cả những đoạn văn giúp ngày mới nhẹ nhõm hơn. Copy mẫu, điền vào chỗ ngoặc vuông <code>[ ]</code>, chỉnh theo tình huống thực tế của bạn — đây là điểm khởi đầu, không phải công thức cứng. Với chủ đề pháp lý, tài chính, sức khỏe, tình cảm: kết quả AI chỉ mang tính tham khảo, không thay thế chuyên gia.</p>
+  <p>Bộ prompt mẫu chia theo nhóm mục đích — công việc, học tập (giải chi tiết từng bước, không chỉ đáp số), lập trình, cảm xúc, sức khỏe, tài chính, nấu ăn, tự nhìn lại bản thân, những điều tò mò hiển nhiên, sách hay, và cả những đoạn văn giúp ngày mới nhẹ nhõm hơn. Copy mẫu, điền vào chỗ ngoặc vuông <code>[ ]</code>, chỉnh theo tình huống thực tế của bạn — đây là điểm khởi đầu, không phải công thức cứng. Với chủ đề pháp lý, tài chính, sức khỏe, tình cảm: kết quả AI chỉ mang tính tham khảo, không thay thế chuyên gia.</p>
   <div class="hero-meta">
-    <span class="pill">108 prompt</span>
-    <span class="pill">28 nhóm mục đích</span>
+    <span class="pill" id="promptCount">108 prompt</span>
+    <span class="pill" id="catCount">28 nhóm mục đích</span>
     <span class="pill">Tiếng Việt</span>
   </div>
 </div>
@@ -305,6 +315,11 @@ footer{
   <div class="nav">
     <input class="nav-search" id="search" placeholder="Tìm theo từ khoá...">
     <button class="tab active" data-filter="all">Tất cả</button>
+    <button class="tab" data-filter="dautusuckhoe">Đầu tư sức khỏe</button>
+    <button class="tab" data-filter="kynangmoingay">Kỹ năng mỗi ngày</button>
+    <button class="tab" data-filter="giaotiepthuyetphuc">Giao tiếp & Thuyết phục</button>
+    <button class="tab" data-filter="docsach">Đọc sách mỗi ngày</button>
+    <button class="tab" data-filter="kiemsoatcamxuc">Kiểm soát cảm xúc</button>
     <button class="tab" data-filter="viet">Viết lách</button>
     <button class="tab" data-filter="phantich">Phân tích dữ liệu</button>
     <button class="tab" data-filter="code">Lập trình</button>
@@ -343,7 +358,161 @@ footer{
 <script>
 const DATA = [
 {
-  id:"viet", name:"Viết lách & Biên tập", color:"var(--amber)", bg:"var(--amber-bg)", num:"01",
+  id:"dautusuckhoe", name:"Đầu tư cho sức khỏe", color:"var(--emerald)", bg:"var(--emerald-bg)", num:"01",
+  desc:"Dùng để xây thói quen chăm sóc sức khỏe tổng thể — ngủ, khám định kỳ, phòng bệnh. Chỉ mang tính tham khảo, không thay thế chẩn đoán y khoa; nếu có triệu chứng cụ thể hãy gặp bác sĩ.",
+  items:[
+    {t:"Lập kế hoạch chăm sóc sức khỏe phòng ngừa", use:"Khi muốn chủ động phòng bệnh thay vì chờ có triệu chứng mới đi khám.",
+     tmpl:`Vai trò: Bạn là chuyên gia y tế dự phòng, tư vấn khách quan
+Độ tuổi/giới tính: [thông tin cơ bản]
+Tiền sử bệnh gia đình (nếu biết): [mô tả]
+Lối sống hiện tại: [ăn uống, vận động, giấc ngủ, mức độ căng thẳng]
+
+Đề xuất: các mốc khám sức khỏe định kỳ/xét nghiệm nên cân nhắc theo độ tuổi, và 2-3 thói quen phòng ngừa nên xây dựng ngay. Nhắc rõ đây là gợi ý tham khảo, quyết định cụ thể nên hỏi bác sĩ.`},
+    {t:"Cải thiện chất lượng giấc ngủ", use:"Khi ngủ không sâu giấc, khó vào giấc, hoặc hay tỉnh giữa đêm.",
+     tmpl:`Vai trò: Bạn là chuyên gia tư vấn giấc ngủ (sleep coach)
+Tình trạng hiện tại: [khó ngủ / hay thức giấc / ngủ đủ giờ nhưng không sâu...]
+Giờ giấc sinh hoạt: [giờ ngủ, giờ thức, thói quen trước khi ngủ]
+Yếu tố có thể ảnh hưởng: [caffeine, màn hình, căng thẳng công việc...]
+
+Phân tích nguyên nhân có thể, và đề xuất 3-4 thay đổi cụ thể trong thói quen để cải thiện giấc ngủ dần theo tuần.`},
+    {t:"Xây 'ngân sách sức khỏe' hàng tuần", use:"Khi muốn coi sức khỏe như một khoản đầu tư cần phân bổ thời gian/tiền bạc rõ ràng, không phải việc làm khi rảnh.",
+     tmpl:`Vai trò: Bạn là cố vấn sức khỏe toàn diện (wellness advisor)
+Thời gian có thể dành cho sức khỏe mỗi tuần: [số giờ]
+Ngân sách có thể chi (nếu có): [số tiền, hoặc để trống]
+Ưu tiên hiện tại: [thể chất / tinh thần / dinh dưỡng / giấc ngủ]
+
+Đề xuất cách phân bổ thời gian/ngân sách hợp lý giữa các hạng mục, và một lịch mẫu trong tuần dễ duy trì.`},
+    {t:"Nhận diện dấu hiệu cơ thể đang cảnh báo", use:"Khi cơ thể có dấu hiệu lạ kéo dài và muốn biết mức độ nên theo dõi thêm hay đi khám sớm — không thay thế chẩn đoán.",
+     tmpl:`Vai trò: Bạn là trợ lý thông tin y tế, thận trọng và không đưa chẩn đoán thay bác sĩ
+Triệu chứng: [mô tả cụ thể, thời gian kéo dài, mức độ]
+Yếu tố liên quan: [thay đổi gần đây về sinh hoạt, ăn uống, căng thẳng...]
+
+Cho biết đây là dấu hiệu nên theo dõi thêm vài ngày hay nên đi khám sớm, và những thông tin tôi nên chuẩn bị khi gặp bác sĩ. Luôn nhấn mạnh đây không phải chẩn đoán.`},
+  ]
+},
+{
+  id:"kynangmoingay", name:"Kỹ năng & Công việc đáng trau dồi mỗi ngày", color:"var(--bronze)", bg:"var(--bronze-bg)", num:"02",
+  desc:"Dùng để xác định kỹ năng đáng đầu tư thời gian học mỗi ngày, dựa trên mục tiêu nghề nghiệp và năng lực hiện có.",
+  items:[
+    {t:"Xác định kỹ năng nên ưu tiên học", use:"Khi có nhiều thứ muốn học nhưng chưa biết nên bắt đầu từ đâu.",
+     tmpl:`Vai trò: Bạn là cố vấn phát triển sự nghiệp
+Công việc/ngành hiện tại: [mô tả]
+Mục tiêu trong 1-2 năm tới: [mô tả]
+Kỹ năng đã có: [liệt kê]
+
+Liệt kê 3-5 kỹ năng nên ưu tiên học, sắp xếp theo mức độ ưu tiên, và giải thích ngắn gọn vì sao kỹ năng đó quan trọng với mục tiêu của tôi.`},
+    {t:"Thiết kế thói quen học 15-30 phút mỗi ngày", use:"Khi đã chọn được kỹ năng cần học nhưng cần một lộ trình luyện tập đều đặn, không quá tải.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên học tập (learning coach)
+Kỹ năng muốn học: [tên kỹ năng]
+Thời gian có thể dành mỗi ngày: [15-30 phút]
+Trình độ hiện tại: [mới bắt đầu / đã biết cơ bản]
+
+Chia lộ trình học theo ngày/tuần thành các bước nhỏ dễ theo, và gợi ý một cách đơn giản để tự đo tiến bộ mỗi tuần.`},
+    {t:"Đánh giá khoảng cách kỹ năng so với công việc mơ ước", use:"Khi muốn biết mình còn thiếu gì so với vị trí công việc mong muốn.",
+     tmpl:`Vai trò: Bạn là chuyên gia đánh giá năng lực (skills gap analyst)
+Vị trí/công việc mơ ước: [mô tả]
+Kỹ năng và kinh nghiệm hiện có: [liệt kê]
+
+Chỉ ra khoảng cách kỹ năng cụ thể giữa hiện tại và yêu cầu công việc, và gợi ý nên lấp đầy khoảng nào trước vì mang lại giá trị nhanh nhất.`},
+    {t:"Bài luyện tập nhỏ mỗi ngày cho một kỹ năng cụ thể", use:"Khi cần một bài tập thực hành ngắn ngay hôm nay, không cần lý thuyết dài dòng.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên kỹ năng thực hành
+Kỹ năng muốn luyện: [tên kỹ năng]
+Trình độ hiện tại: [mô tả]
+
+Đưa ra một bài tập thực hành 10-15 phút có thể làm ngay hôm nay, kèm tiêu chí để tôi tự chấm mình đã làm tốt hay chưa.`},
+  ]
+},
+{
+  id:"giaotiepthuyetphuc", name:"Luyện giao tiếp & Thuyết phục mỗi ngày", color:"var(--lavender)", bg:"var(--lavender-bg)", num:"03",
+  desc:"Dùng để luyện tập kỹ năng nói chuyện, trình bày và thuyết phục qua các bài tập nhỏ, đều đặn hằng ngày.",
+  items:[
+    {t:"Bài tập thuyết phục theo tình huống giả định", use:"Khi cần luyện phản xạ thuyết phục trước một tình huống thật hoặc sắp diễn ra.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên kỹ năng thuyết phục (persuasion coach)
+Tình huống cần thuyết phục: [mô tả, ví dụ: thuyết phục sếp duyệt ngân sách, thuyết phục khách hàng...]
+Đối tượng nghe: [mô tả họ quan tâm điều gì, e ngại điều gì]
+
+Soạn một kịch bản thuyết phục mẫu, kèm 2 câu hỏi phản biện khó có thể gặp và gợi ý cách trả lời từng câu.`},
+    {t:"Luyện tóm tắt ý trong 30 giây (elevator pitch)", use:"Khi cần trình bày một ý tưởng thật ngắn gọn, thuyết phục, không lan man.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên trình bày (presentation coach)
+Ý tưởng/chủ đề cần trình bày: [mô tả]
+Đối tượng nghe: [mô tả]
+
+Viết một bản pitch 30 giây, sau đó giải thích ngắn gọn vì sao từng câu có mặt trong đó (mở đầu gây chú ý, giá trị cốt lõi, lời kêu gọi hành động).`},
+    {t:"Phân tích kỹ năng thuyết phục qua một cuộc trò chuyện thật", use:"Khi vừa thuyết trình/trao đổi xong và muốn rút kinh nghiệm cụ thể.",
+     tmpl:`Vai trò: Bạn là chuyên gia phân tích giao tiếp thuyết phục
+Đây là nội dung cuộc trò chuyện/bài thuyết trình đã diễn ra: [dán/mô tả nội dung]
+
+Chỉ ra: điểm thuyết phục hiệu quả, điểm chưa thuyết phục hoặc gây hoài nghi, và 2 điều cụ thể nên cải thiện cho lần sau.`},
+    {t:"Bài luyện phản xạ trả lời câu hỏi khó bất ngờ", use:"Khi chuẩn bị cho một buổi phỏng vấn, thuyết trình, hoặc tranh luận có thể gặp câu hỏi hóc búa.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên phỏng vấn/tranh luận
+Bối cảnh: [phỏng vấn xin việc / thuyết trình / tranh luận nhóm...]
+Một câu hỏi khó có thể gặp: [mô tả hoặc để trống để AI tự đề xuất]
+
+Gợi ý một khung trả lời (không phải câu trả lời học thuộc) cho câu hỏi này, và đưa thêm 2 câu hỏi khó tương tự để tôi tự luyện phản xạ.`},
+  ]
+},
+{
+  id:"docsach", name:"Đọc sách mỗi ngày", color:"var(--ocean)", bg:"var(--ocean-bg)", num:"04",
+  desc:"Dùng để xây thói quen đọc đều đặn mỗi ngày, chọn sách phù hợp quỹ thời gian, và tiêu hoá điều vừa đọc thay vì đọc lướt qua.",
+  items:[
+    {t:"Xây thói quen đọc sách 15-20 phút mỗi ngày", use:"Khi muốn bắt đầu đọc đều đặn nhưng dễ bỏ dở sau vài ngày.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên xây thói quen đọc sách
+Thời gian có thể dành mỗi ngày: [15-20 phút]
+Thời điểm trong ngày dễ đọc nhất: [sáng sớm / trước ngủ / giờ nghỉ trưa...]
+Thể loại yêu thích: [mô tả]
+
+Gợi ý cách bắt đầu, cách gắn việc đọc vào một thói quen sẵn có (habit stacking), và cách xử lý khi lỡ bỏ đọc vài ngày mà không bỏ cuộc hẳn.`},
+    {t:"Chọn sách tiếp theo dựa trên cuốn vừa đọc xong", use:"Khi vừa đọc xong một cuốn và chưa biết đọc gì tiếp theo.",
+     tmpl:`Vai trò: Bạn là người tư vấn đọc sách cá nhân hoá
+Cuốn vừa đọc xong: [tên sách]
+Cảm nhận về cuốn đó: [thích/không thích điều gì]
+
+Gợi ý 3 cuốn sách tiếp theo theo 3 hướng khác nhau: một cuốn cùng chủ đề đào sâu hơn, một cuốn mở rộng sang góc nhìn khác, và một cuốn đổi hẳn thể loại để làm mới.`},
+    {t:"Ghi chú & tiêu hoá điều vừa đọc mỗi ngày", use:"Khi đọc xong một đoạn/chương nhưng đọc xong là quên, không đọng lại gì.",
+     tmpl:`Vai trò: Bạn là người hướng dẫn đọc chủ động (active reading coach)
+Đoạn/chương vừa đọc hôm nay: [tóm tắt ngắn hoặc dán trích đoạn]
+
+Đặt cho tôi 3 câu hỏi giúp tiêu hoá nội dung này sâu hơn (không chỉ hỏi lại sự kiện), và gợi ý một cách liên hệ nội dung này với đời sống thực tế của tôi.`},
+    {t:"Vượt qua tình trạng đọc dở dang không xong sách", use:"Khi có nhiều cuốn đang đọc dở, không cuốn nào đọc xong.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên thói quen đọc
+Cuốn đang đọc dở: [tên sách]
+Lý do khiến tôi chững lại: [mô tả: sách không hợp / mất động lực / sách quá dài/khó...]
+
+Giúp tôi chẩn đoán nguyên nhân thực sự khiến tôi bỏ dở, và gợi ý nên tiếp tục đọc theo cách nào hay dừng lại không áy náy để chuyển sang cuốn khác.`},
+  ]
+},
+{
+  id:"kiemsoatcamxuc", name:"Học cách kiểm soát cảm xúc", color:"var(--wine)", bg:"var(--wine-bg)", num:"05",
+  desc:"Dùng để luyện nhận diện và điều hoà cảm xúc trong các tình huống cụ thể. Đây là công cụ hỗ trợ tự luyện tập, không thay thế trị liệu tâm lý nếu cảm xúc đang ảnh hưởng nghiêm trọng đến cuộc sống.",
+  items:[
+    {t:"Nhận diện cảm xúc ngay lúc đang bị cuốn theo", use:"Khi đang trong lúc cảm xúc dâng cao và muốn có một bước dừng lại trước khi phản ứng.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên điều hoà cảm xúc (emotional regulation coach)
+Cảm xúc tôi đang trải qua: [mô tả]
+Tình huống vừa kích hoạt cảm xúc này: [mô tả]
+
+Hướng dẫn tôi 3 bước ngắn để tạm dừng và gọi tên cảm xúc thay vì phản ứng ngay lập tức, có thể làm được trong vài phút tại chỗ.`},
+    {t:"Phân tích 'điểm kích hoạt' (trigger) lặp lại", use:"Khi nhận ra một số tình huống luôn khiến mình phản ứng cảm xúc mạnh, muốn hiểu điểm chung.",
+     tmpl:`Vai trò: Bạn là chuyên gia tâm lý hành vi, khách quan và không phán xét
+Mô tả 2-3 lần gần đây tôi có cảm xúc mạnh: [mô tả từng lần]
+Điểm chung tôi nhận thấy giữa các tình huống (nếu có): [mô tả, hoặc để trống]
+
+Giúp tôi nhận diện trigger cụ thể dựa trên các tình huống tôi mô tả, và gợi ý một cách chuẩn bị tâm lý trước khi gặp lại tình huống tương tự.`},
+    {t:"Luyện kỹ thuật hạ nhiệt trước khi phản ứng", use:"Khi biết mình dễ phản ứng thái quá (giận dữ, lo âu) và muốn có sẵn cách xử lý ngay lúc đó.",
+     tmpl:`Vai trò: Bạn là huấn luyện viên kiểm soát cảm xúc mạnh (giận dữ/lo âu)
+Tình huống hay khiến tôi phản ứng thái quá: [mô tả]
+Cách tôi thường phản ứng: [mô tả]
+
+Gợi ý 2-3 kỹ thuật hạ nhiệt lành mạnh (hít thở, đếm số, tạm rời khỏi tình huống, gọi tên 5 điều xung quanh...) tôi có thể áp dụng ngay trong tình huống đó, giải thích ngắn gọn cách làm từng kỹ thuật.`},
+    {t:"Viết lại một tình huống theo góc nhìn cân bằng hơn", use:"Khi một tình huống khiến cảm xúc tiêu cực kéo dài và muốn nhìn nhận lại cho cân bằng hơn, không phải để phủ nhận cảm xúc.",
+     tmpl:`Vai trò: Bạn là chuyên gia tâm lý theo hướng nhận thức - hành vi (CBT-informed coach), không phán xét
+Tình huống khiến tôi có cảm xúc tiêu cực mạnh: [mô tả]
+Suy nghĩ xuất hiện trong đầu tôi lúc đó: [mô tả]
+
+Giúp tôi nhận diện nếu suy nghĩ đó có phần đang phóng đại hoặc một chiều, và gợi ý một cách nhìn cân bằng hơn về tình huống — không phủ nhận rằng cảm xúc của tôi là thật.`},
+  ]
+},
+{
+  id:"viet", name:"Viết lách & Biên tập", color:"var(--amber)", bg:"var(--amber-bg)", num:"06",
   desc:"Dùng khi cần soạn email, bài viết, mô tả sản phẩm — bất cứ thứ gì có người đọc cụ thể ở đầu kia.",
   items:[
     {t:"Soạn nội dung theo vai trò & đối tượng", use:"Khi cần một bài viết có giọng văn nhất quán, đúng người đọc.",
@@ -381,7 +550,7 @@ Với mỗi lỗi sửa, ghi chú ngắn gọn lý do. Sau đó đưa ra bản h
   ]
 },
 {
-  id:"phantich", name:"Phân tích & Tổng hợp dữ liệu", color:"var(--teal)", bg:"var(--teal-bg)", num:"02",
+  id:"phantich", name:"Phân tích & Tổng hợp dữ liệu", color:"var(--teal)", bg:"var(--teal-bg)", num:"07",
   desc:"Dùng khi có báo cáo, số liệu, hoặc văn bản dài cần rút ra insight thay vì chỉ tóm tắt.",
   items:[
     {t:"Phân tích theo quy trình 3 bước", use:"Khi có dữ liệu/báo cáo cần hiểu nhanh và có kết luận hành động được.",
@@ -422,7 +591,7 @@ Nếu thiếu dữ liệu ở ô nào, ghi "không rõ" thay vì tự suy đoán
   ]
 },
 {
-  id:"code", name:"Lập trình & Debug", color:"var(--indigo)", bg:"var(--indigo-bg)", num:"03",
+  id:"code", name:"Lập trình & Debug", color:"var(--indigo)", bg:"var(--indigo-bg)", num:"08",
   desc:"Dùng khi viết, sửa lỗi, hoặc review code — càng cụ thể về môi trường và ràng buộc, kết quả càng sát.",
   items:[
     {t:"Debug có ngữ cảnh đầy đủ", use:"Khi gặp lỗi và cần AI hiểu đúng tình huống thay vì đoán mò.",
@@ -462,7 +631,7 @@ Ràng buộc: [không đổi API bên ngoài, giữ nguyên input/output]
   ]
 },
 {
-  id:"brainstorm", name:"Brainstorm & Sáng tạo ý tưởng", color:"var(--coral)", bg:"var(--coral-bg)", num:"04",
+  id:"brainstorm", name:"Brainstorm & Sáng tạo ý tưởng", color:"var(--coral)", bg:"var(--coral-bg)", num:"09",
   desc:"Dùng khi cần nhiều lựa chọn để so sánh, không phải một câu trả lời duy nhất.",
   items:[
     {t:"Brainstorm có bộ lọc cuối", use:"Khi cần cả số lượng ý tưởng lẫn một gợi ý chọn lọc.",
@@ -498,7 +667,7 @@ Trước khi đưa giải pháp, hãy đặt cho tôi 5 câu hỏi để làm r�
   ]
 },
 {
-  id:"hoctap", name:"Học tập & Giải thích khái niệm", color:"var(--violet)", bg:"var(--violet-bg)", num:"05",
+  id:"hoctap", name:"Học tập & Giải thích khái niệm", color:"var(--violet)", bg:"var(--violet-bg)", num:"10",
   desc:"Dùng khi học một chủ đề mới hoặc cần hiểu sâu hơn một khái niệm quen thuộc.",
   items:[
     {t:"Giải thích theo trình độ + kiểm tra hiểu bài", use:"Khi học khái niệm mới và muốn tự kiểm tra ngay.",
@@ -530,7 +699,7 @@ Gợi ý lộ trình học theo giai đoạn, mỗi giai đoạn nêu rõ nên h
   ]
 },
 {
-  id:"quyetdinh", name:"Ra quyết định & So sánh", color:"var(--slate)", bg:"var(--slate-bg)", num:"06",
+  id:"quyetdinh", name:"Ra quyết định & So sánh", color:"var(--slate)", bg:"var(--slate-bg)", num:"11",
   desc:"Dùng khi cần cân nhắc giữa các lựa chọn — để AI trình bày khách quan, không thay bạn quyết định.",
   items:[
     {t:"So sánh khách quan không kết luận hộ", use:"Khi muốn tự quyết định, chỉ cần dữ kiện rõ ràng.",
@@ -561,7 +730,7 @@ Lập bảng ma trận quyết định, chấm điểm từng lựa chọn theo 
   ]
 },
 {
-  id:"giaotiep", name:"Giao tiếp công việc", color:"var(--rose)", bg:"var(--rose-bg)", num:"07",
+  id:"giaotiep", name:"Giao tiếp công việc", color:"var(--rose)", bg:"var(--rose-bg)", num:"12",
   desc:"Dùng cho email, phản hồi, chuẩn bị họp — nơi giọng điệu và ngữ cảnh quan hệ ảnh hưởng nhiều đến kết quả.",
   items:[
     {t:"Soạn email nhạy cảm", use:"Khi cần truyền đạt tin không vui hoặc yêu cầu khó (từ chối, xin gia hạn...).",
@@ -601,7 +770,7 @@ Soạn tin nhắn từ chối ngắn gọn, chân thành, không cần giải th
   ]
 },
 {
-  id:"nghiencuu", name:"Nghiên cứu & Tóm tắt tài liệu", color:"var(--olive)", bg:"var(--olive-bg)", num:"08",
+  id:"nghiencuu", name:"Nghiên cứu & Tóm tắt tài liệu", color:"var(--olive)", bg:"var(--olive-bg)", num:"13",
   desc:"Dùng khi cần đọc nhanh tài liệu dài hoặc tổng hợp thông tin từ nhiều nguồn.",
   items:[
     {t:"Tóm tắt tài liệu theo cấu trúc", use:"Khi có tài liệu/báo cáo dài cần nắm ý chính nhanh.",
@@ -636,7 +805,7 @@ Phân tích: luận điểm chính là gì, bằng chứng đưa ra có đủ m�
   ]
 },
 {
-  id:"meta", name:"Tinh chỉnh & Phản biện AI Output", color:"var(--ink)", bg:"var(--border-soft)", num:"09",
+  id:"meta", name:"Tinh chỉnh & Phản biện AI Output", color:"var(--ink)", bg:"var(--border-soft)", num:"14",
   desc:"Meta-prompt: dùng để cải thiện chính kết quả AI vừa trả lời, thay vì viết lại từ đầu.",
   items:[
     {t:"Yêu cầu chỉnh sửa có mục tiêu", use:"Khi output gần đúng nhưng còn một điểm cần sửa.",
@@ -659,7 +828,7 @@ Mục đích dùng: [để gửi cho ai, dùng làm gì] — điều này ảnh 
   ]
 },
 {
-  id:"eq", name:"EQ & Giao tiếp cảm xúc", color:"var(--plum)", bg:"var(--plum-bg)", num:"10",
+  id:"eq", name:"EQ & Giao tiếp cảm xúc", color:"var(--plum)", bg:"var(--plum-bg)", num:"15",
   desc:"Dùng khi cần hiểu cảm xúc của mình/người khác, xử lý xung đột, hoặc phản ứng bình tĩnh hơn trong giao tiếp.",
   items:[
     {t:"Giải mã tình huống giao tiếp khó", use:"Khi vừa trải qua cuộc nói chuyện khó chịu và muốn hiểu chuyện gì đã xảy ra.",
@@ -689,7 +858,7 @@ Gợi ý cách mở đầu cuộc trò chuyện, 2 điều nên tránh nói, và
   ]
 },
 {
-  id:"ngonngu", name:"Phân tích ngôn từ & Hội thoại", color:"var(--steel)", bg:"var(--steel-bg)", num:"11",
+  id:"ngonngu", name:"Phân tích ngôn từ & Hội thoại", color:"var(--steel)", bg:"var(--steel-bg)", num:"16",
   desc:"Dùng khi cần đọc hiểu ẩn ý, nhận diện thao túng, hoặc chọn giọng điệu phù hợp trong tin nhắn.",
   items:[
     {t:"Phân tích ẩn ý trong tin nhắn", use:"Khi nhận một tin nhắn mơ hồ và không chắc ý thật sự là gì.",
@@ -714,7 +883,7 @@ Với mỗi phiên bản, mô tả người đọc có thể cảm nhận giọn
   ]
 },
 {
-  id:"sheet", name:"Google Apps Script & Sheet", color:"var(--forest)", bg:"var(--forest-bg)", num:"12",
+  id:"sheet", name:"Google Apps Script & Sheet", color:"var(--forest)", bg:"var(--forest-bg)", num:"17",
   desc:"Dùng khi cần viết script tự động hoá hoặc công thức xử lý dữ liệu trong Google Sheets.",
   items:[
     {t:"Viết Apps Script theo yêu cầu cụ thể", use:"Khi cần tự động hoá một tác vụ lặp lại trong Sheet.",
@@ -747,7 +916,7 @@ Cách tôi sẽ dùng: [xem báo cáo hàng tuần, chia sẻ với team...]
   ]
 },
 {
-  id:"docfile", name:"Tạo file Word & Excel", color:"var(--wood)", bg:"var(--wood-bg)", num:"13",
+  id:"docfile", name:"Tạo file Word & Excel", color:"var(--wood)", bg:"var(--wood-bg)", num:"18",
   desc:"Dùng để AI giúp định hình nội dung/cấu trúc trước khi tạo file thực tế (ví dụ với Claude, chỉ cần mô tả — Claude tạo file trực tiếp).",
   items:[
     {t:"Định hình cấu trúc báo cáo Word", use:"Trước khi tạo file Word cần rõ bố cục sẽ có mục gì.",
@@ -774,7 +943,7 @@ Sắp xếp lại thành cấu trúc rõ ràng (tiêu đề, mục, bảng nếu
   ]
 },
 {
-  id:"phaply", name:"Pháp lý cơ bản", color:"var(--maroon)", bg:"var(--maroon-bg)", num:"14",
+  id:"phaply", name:"Pháp lý cơ bản", color:"var(--maroon)", bg:"var(--maroon-bg)", num:"19",
   desc:"Dùng để hiểu khái niệm pháp lý và chuẩn bị câu hỏi — không thay thế tư vấn từ luật sư, đặc biệt với vụ việc có giá trị pháp lý thực tế.",
   items:[
     {t:"Giải thích điều khoản hợp đồng khó hiểu", use:"Khi đọc hợp đồng gặp điều khoản không rõ nghĩa.",
@@ -798,7 +967,7 @@ Giải thích các bước chính theo trình tự, thời gian dự kiến mỗ
   ]
 },
 {
-  id:"tinhcam", name:"Tư vấn tình cảm", color:"var(--cherry)", bg:"var(--cherry-bg)", num:"15",
+  id:"tinhcam", name:"Tư vấn tình cảm", color:"var(--cherry)", bg:"var(--cherry-bg)", num:"20",
   desc:"Dùng để sắp xếp suy nghĩ và chuẩn bị lời nói — mang tính tham khảo, quyết định cuối cùng nên dựa trên sự thấu hiểu thực tế mối quan hệ của bạn.",
   items:[
     {t:"Sắp xếp suy nghĩ trước khi nói chuyện tình cảm", use:"Khi rối bời cảm xúc và cần nhìn vấn đề rõ ràng hơn trước khi nói chuyện với đối phương.",
@@ -823,7 +992,7 @@ Mô tả mối quan hệ: [thời gian quen biết, những gì đang diễn ra]
   ]
 },
 {
-  id:"giacngo", name:"Giác ngộ & Phát triển bản thân", color:"var(--dusk)", bg:"var(--dusk-bg)", num:"16",
+  id:"giacngo", name:"Giác ngộ & Phát triển bản thân", color:"var(--dusk)", bg:"var(--dusk-bg)", num:"21",
   desc:"Dùng như công cụ hỗ trợ suy ngẫm — không phải câu trả lời tuyệt đối cho các câu hỏi triết học/tâm linh của riêng bạn.",
   items:[
     {t:"Khám phá giá trị sống cốt lõi", use:"Khi cảm thấy mất phương hướng, không biết mình thực sự coi trọng điều gì.",
@@ -845,7 +1014,7 @@ Viết một bài hướng dẫn thiền/thở ngắn, từng bước, giọng �
   ]
 },
 {
-  id:"suckhoe", name:"Ăn uống, Gym & Thể dục", color:"var(--lime)", bg:"var(--lime-bg)", num:"17",
+  id:"suckhoe", name:"Ăn uống, Gym & Thể dục", color:"var(--lime)", bg:"var(--lime-bg)", num:"22",
   desc:"Dùng để lên khung thói quen luyện tập/ăn uống lành mạnh — nếu có vấn đề sức khỏe cụ thể, nên tham khảo bác sĩ/chuyên gia dinh dưỡng trước khi áp dụng.",
   items:[
     {t:"Lên kế hoạch tập gym theo mục tiêu", use:"Khi cần lịch tập rõ ràng theo mục tiêu cá nhân.",
@@ -872,7 +1041,7 @@ Lịch trình hàng ngày của tôi: [mô tả sơ bộ]
   ]
 },
 {
-  id:"taichinh", name:"Tài chính cá nhân & Kinh tế", color:"var(--deepteal)", bg:"var(--deepteal-bg)", num:"18",
+  id:"taichinh", name:"Tài chính cá nhân & Kinh tế", color:"var(--deepteal)", bg:"var(--deepteal-bg)", num:"23",
   desc:"Dùng để hiểu khái niệm và có thông tin nền — đây không phải tư vấn tài chính chuyên nghiệp, quyết định đầu tư/vay nợ nên tham khảo thêm chuyên gia.",
   items:[
     {t:"Lập kế hoạch quản lý chi tiêu cá nhân", use:"Khi cần một hệ thống quản lý tiền rõ ràng.",
@@ -897,7 +1066,7 @@ Phân tích các rủi ro chính, câu hỏi tôi nên tự trả lời trước
   ]
 },
 {
-  id:"nghenghiep", name:"Xu hướng nghề & Thu nhập mới", color:"var(--gold)", bg:"var(--gold-bg)", num:"19",
+  id:"nghenghiep", name:"Xu hướng nghề & Thu nhập mới", color:"var(--gold)", bg:"var(--gold-bg)", num:"24",
   desc:"Dùng để khám phá hướng nghề nghiệp/thu nhập phụ dựa trên xu hướng — nên tự xác minh thêm vì thị trường thay đổi nhanh.",
   items:[
     {t:"Khám phá nghề/thu nhập phụ phù hợp kỹ năng sẵn có", use:"Khi muốn tìm hướng kiếm thêm thu nhập dựa trên thế mạnh hiện tại.",
@@ -922,7 +1091,7 @@ Gợi ý 3-5 ngách nhỏ trong lĩnh vực này còn ít người khai thác, g
   ]
 },
 {
-  id:"tomo", name:"Tò mò đời thường", color:"var(--sky)", bg:"var(--sky-bg)", num:"20",
+  id:"tomo", name:"Tò mò đời thường", color:"var(--sky)", bg:"var(--sky-bg)", num:"25",
   desc:"Dùng cho những điều 'hiển nhiên' quanh mình nhưng chưa từng hỏi tại sao — biển mặn, trời xanh, vì sao đá lạnh nổi trên nước... Không có câu hỏi nào là ngớ ngẩn cả.",
   items:[
     {t:"Giải thích một hiện tượng đời thường", use:"Khi thấy/dùng thứ gì đó hằng ngày nhưng chưa hiểu cơ chế thật sự.",
@@ -948,7 +1117,7 @@ Giải thích như thể tôi chưa biết gì về chủ đề này, dùng ví 
   ]
 },
 {
-  id:"toanvan", name:"Toán & Văn theo cấp lớp", color:"var(--crimson)", bg:"var(--crimson-bg)", num:"21",
+  id:"toanvan", name:"Toán & Văn theo cấp lớp", color:"var(--crimson)", bg:"var(--crimson-bg)", num:"26",
   desc:"Dùng để học/giải bài có lời giải chi tiết từng bước, đúng kiến thức trong chương trình — không chỉ ra đáp án cuối cùng.",
   items:[
     {t:"Giải bài Toán từng bước theo đúng cấp lớp", use:"Khi cần hiểu cách làm, không chỉ cần đáp số.",
@@ -978,7 +1147,7 @@ Ra cho tôi 3 đề luyện tập cùng dạng, kèm đáp án/gợi ý cách l�
   ]
 },
 {
-  id:"codehtml", name:"Code trang HTML cho nhiệm vụ cụ thể", color:"var(--graphite)", bg:"var(--graphite-bg)", num:"22",
+  id:"codehtml", name:"Code trang HTML cho nhiệm vụ cụ thể", color:"var(--graphite)", bg:"var(--graphite-bg)", num:"27",
   desc:"Dùng khi cần một công cụ/mini-app HTML gọn nhẹ để giải quyết một nhiệm vụ cụ thể, không cần cả một dự án lớn.",
   items:[
     {t:"Tạo công cụ/mini-app HTML một trang", use:"Khi cần một công cụ nhỏ gọn cho một tác vụ cụ thể (tính toán, đếm giờ, theo dõi...).",
@@ -1011,7 +1180,7 @@ Giữ nguyên chức năng, chỉ chỉnh CSS (và cấu trúc HTML nếu cần)
   ]
 },
 {
-  id:"camhung", name:"Cảm hứng & Suy ngẫm mỗi ngày", color:"var(--sage)", bg:"var(--sage-bg)", num:"23",
+  id:"camhung", name:"Cảm hứng & Suy ngẫm mỗi ngày", color:"var(--sage)", bg:"var(--sage-bg)", num:"28",
   desc:"Dùng để đọc mỗi ngày một đoạn ngắn giúp tâm trạng nhẹ nhõm hơn, hoặc rèn tư duy tích cực dần theo thời gian — không sáo rỗng, không giáo điều.",
   items:[
     {t:"Đoạn văn ngắn truyền cảm hứng theo tâm trạng", use:"Khi cần một chút động lực hoặc sự đồng cảm phù hợp với tâm trạng hiện tại.",
@@ -1043,7 +1212,7 @@ Viết một đoạn ngắn (150-250 từ) gồm: một góc nhìn mới về ch
   ]
 },
 {
-  id:"sachtomtat", name:"Tóm tắt sách", color:"var(--cobalt)", bg:"var(--cobalt-bg)", num:"24",
+  id:"sachtomtat", name:"Tóm tắt sách", color:"var(--cobalt)", bg:"var(--cobalt-bg)", num:"29",
   desc:"Dùng khi muốn nắm nhanh nội dung cốt lõi một cuốn sách, ôn lại sách đã đọc, hoặc chọn sách phù hợp trước khi mua/đọc trọn.",
   items:[
     {t:"Tóm tắt sách theo cấu trúc chương", use:"Khi muốn nắm toàn bộ mạch nội dung một cuốn sách cụ thể trước hoặc thay vì đọc trọn.",
@@ -1084,7 +1253,7 @@ Gợi ý 3-5 cuốn sách phù hợp, mỗi cuốn nêu ngắn gọn: viết v�
   ]
 },
 {
-  id:"chiemtinh", name:"Tarot, Chiêm tinh & Tự nghiệm", color:"var(--umber)", bg:"var(--umber-bg)", num:"25",
+  id:"chiemtinh", name:"Tarot, Chiêm tinh & Tự nghiệm", color:"var(--umber)", bg:"var(--umber-bg)", num:"30",
   desc:"Chiêm tinh, thần số học, tarot là công cụ phản tư và giải trí mang tính văn hoá — chưa có bằng chứng khoa học cho thấy chúng dự đoán được tương lai hay tính cách một cách đáng tin cậy. Dùng các mẫu dưới đây để tự soi chiếu suy nghĩ, không phải để thay thế quyết định thực tế.",
   items:[
     {t:"Diễn giải một lá bài/biểu tượng như một bài tập phản tư", use:"Khi muốn dùng một lá tarot hoặc biểu tượng như điểm khởi đầu để tự suy ngẫm, không phải để tiên đoán.",
@@ -1107,7 +1276,7 @@ Viết một đoạn ngắn (100-150 từ) theo phong cách chiêm tinh vui vẻ
   ]
 },
 {
-  id:"bachkhoa", name:"Bách khoa tri thức mỗi ngày", color:"var(--jade)", bg:"var(--jade-bg)", num:"26",
+  id:"bachkhoa", name:"Bách khoa tri thức mỗi ngày", color:"var(--jade)", bg:"var(--jade-bg)", num:"31",
   desc:"Dùng khi rảnh rỗi muốn đọc một điều thú vị bất kỳ — lịch sử, khoa học, văn hoá, thiên nhiên — không cần mục đích cụ thể, chỉ để mở mang.",
   items:[
     {t:"Một sự kiện/phát minh thú vị ngẫu nhiên", use:"Khi muốn đọc một mẩu kiến thức thú vị mà không cần chọn chủ đề cụ thể.",
@@ -1135,7 +1304,7 @@ Ra bộ câu hỏi trắc nghiệm mức độ từ dễ đến khó, kèm đáp
   ]
 },
 {
-  id:"nauan", name:"Học nấu ăn", color:"var(--brick)", bg:"var(--brick-bg)", num:"27",
+  id:"nauan", name:"Học nấu ăn", color:"var(--brick)", bg:"var(--brick-bg)", num:"32",
   desc:"Dùng khi muốn học nấu một món cụ thể, biến tấu theo nguyên liệu có sẵn, hoặc cứu một món đang nấu hỏng.",
   items:[
     {t:"Học nấu một món từ đầu, đúng trình độ", use:"Khi muốn nấu một món cụ thể lần đầu và cần hướng dẫn sát tay nghề thật của mình.",
@@ -1177,7 +1346,7 @@ Giải thích nguyên lý của kỹ thuật này (vì sao làm vậy sẽ ra k�
   ]
 },
 {
-  id:"tuhoanthien", name:"Tự nhìn lại & Cải thiện bản thân", color:"var(--azure)", bg:"var(--azure-bg)", num:"28",
+  id:"tuhoanthien", name:"Tự nhìn lại & Cải thiện bản thân", color:"var(--azure)", bg:"var(--azure-bg)", num:"33",
   desc:"Dùng để tự soi chiếu qua các tình huống cụ thể bạn mô tả — AI chỉ phản ánh dựa trên thông tin bạn cung cấp, không thể thay thế sự tự nhận thức hoặc góc nhìn của người thân/chuyên gia thật sự hiểu bạn.",
   items:[
     {t:"Nhận diện điểm cần cải thiện qua tình huống lặp lại", use:"Khi nhận ra một kiểu tình huống cứ lặp đi lặp lại và muốn hiểu phần mình đóng góp vào đó.",
@@ -1216,6 +1385,10 @@ Biểu hiện cụ thể trong đời sống: [mô tả tình huống hay xảy 
 ];
 
 const main = document.getElementById('main');
+let totalPrompts = 0;
+DATA.forEach(cat=>{ totalPrompts += cat.items.length; });
+document.getElementById('promptCount').textContent = totalPrompts + ' prompt';
+document.getElementById('catCount').textContent = DATA.length + ' nhóm mục đích';
 
 DATA.forEach(cat=>{
   const section = document.createElement('section');
